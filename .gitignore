@@ -1,4 +1,5 @@
 # Prerequisites
+.clang-*
 *.d
 
 # Compiled Object files
