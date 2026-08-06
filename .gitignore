@@ -1,6 +1,7 @@
 # Prerequisites
 .clang-*
 *.d
+tags
 
 # Compiled Object files
 *.slo
