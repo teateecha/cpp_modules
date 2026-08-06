@@ -1,5 +1,0 @@
-NAME		=	megaphone
-CC			=	cc #check if this is the right compiler
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98
-
-all:	$(NAME)
