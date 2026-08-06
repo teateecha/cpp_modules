@@ -2,17 +2,18 @@ NAME		=	megaphone
 CC			=	cc #check if this is the right compiler
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 
-SRCS			=	megaphone.cpp
+SRC			=	megaphone.cpp
 OBJ			=	$(SRC:.c=.o)
-OBJS		=	$(addprefix, $(OBJ))
 
 all:	$(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+# Linking
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
+# compiling
 %.o: %.cpp
-	$(CC) $(IFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
