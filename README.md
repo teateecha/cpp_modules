@@ -3,3 +3,6 @@ this educational repro was created to learn C++. It contains my take on various 
 
 ## norm
 For uniformity the CppCoreGuidelines where followed.
+
+## sources
+https://cplusplus.com/reference/cctype/toupper/?kw=toupper
