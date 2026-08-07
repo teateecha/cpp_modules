@@ -1,5 +1,5 @@
 #include <ctype.h>/*for toupper*/
-#include <iostream>
+#include <iostream>/*for std*/
 
 int	main(int argc, char **argv)
 {
