@@ -3,12 +3,12 @@
 
 Zombie::Zombie(std::string iname) : _name(iname) 
 {
-	std::cout << "Constructor called\n";
+	std::cout << _name << ": Constructor called\n";
 }
 
 Zombie::~Zombie()
 {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << _name << ": Destructor called" << std::endl;
 }
 
 /*dont forget the namespace.*/
