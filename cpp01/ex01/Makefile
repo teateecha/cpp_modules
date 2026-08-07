@@ -3,7 +3,9 @@ CC			=	c++ #check if this is the right compiler
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 
 SRC			=	main.cpp \
-				Zombie.cpp
+				Zombie.cpp \
+				zombieHorde.cpp
+
 INC			=	Zombie.hpp \
 
 OBJ			=	$(SRC:.c=.o)

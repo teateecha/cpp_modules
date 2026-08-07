@@ -13,6 +13,7 @@ void randomChump(std::string name)
 	return ;
 }
 
+
 int	main(void)
 {
 	Zombie *ayumi = newZombie("Ayumi");
