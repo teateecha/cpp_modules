@@ -7,11 +7,18 @@ class PhoneBook
 {
     public:
         PhoneBook();
-        PhoneBook(const PhoneBook& other);
-        PhoneBook& operator=(const PhoneBook& other);
         ~PhoneBook();
-		Contact
-    private:
+		Contact	*getContacts(void);
+		//helper
+		void	clear_space(std::string str)
+		void	callCmd(std::string buff);//TODO
+		//cmds
+		void	search(Contact *contacts);//TODO
+		void	add(Contact *contacts);//TODO
+
+
+	private:
+		Contact	_contacts[8];
 
 };
 

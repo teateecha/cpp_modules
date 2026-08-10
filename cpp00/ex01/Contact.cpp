@@ -1,27 +1,21 @@
 #include "Contact.hpp"
+#include <iostream>/*for std*/
 
-Contact::Contact()
+Contact::Contact(void)
 {
-    // Constructor
-}
-
-Contact::Contact(const Contact& other)
-{
-    // Copy constructor
-}
-
-Contact& Contact::operator=(const Contact& other)
-{
-    // Copy assignment
-    if (this != &other)
-    {
-        // TODO
-    }
-    return *this;
+	std::cout << _firstName << ": Constructor called" << std::endl;
 }
 
 Contact::~Contact()
 {
-    // Destructor
+    std::cout << _firstName << ": Destructor called" << std::endl;
 }
 
+void	setContact(std::string fn,
+			std::string ln,
+			std::string nn,
+			std::string pn,
+			std::string ds)
+{
+	std::cin>>buff
+}
