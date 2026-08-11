@@ -11,12 +11,11 @@ class Contact
 		std::string	getNickName(void);//TODO
 		std::string	getPhoneNumber(void);//TODO
 		std::string	getDarkesSecret(void);//TODO
-		std::string	getFirstName(void);//TODO
-		void	setContact(std::string fn,
-					std::string ln,
-					std::string nn,
-					std::string pn,
-					std::string ds);
+		bool		setFirstName(std::string fn);//TODO
+		bool		setLastName(std::string  ln);//TODO
+		bool		setNickName(std::string nn);//TODO
+		bool		setPhoneNumber(std::string pn);//TODO
+		bool		setDarkesSecret(std::string ds);//TODO
 		void	displayIndex(void);//TODO
 		void	displayDetails(int idx);//TODO
 
