@@ -6,16 +6,17 @@
 class PhoneBook
 {
     public:
+		int		idx;
         PhoneBook();
         ~PhoneBook();
-		Contact	*getContacts(void);
-		//helper
-		void	clear_space(std::string str)
-		void	callCmd(std::string buff);//TODO
-		//cmds
-		void	search(Contact *contacts);//TODO
-		void	add(Contact *contacts);//TODO
 
+		//cmds
+		int		askCmd(void);
+		void	search();//TODO
+		void	add();//TODO
+		//accessors
+		void	setContact(int idx);
+		void	getContact(int idx)
 
 	private:
 		Contact	_contacts[8];
