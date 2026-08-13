@@ -66,7 +66,7 @@ std::string	contact::getfirstname(void)
 std::string	contact::getlastname(void)
 std::string	contact::getnickname(void)
 std::string	contact::getphonenumber(void)
-std::string	contact::getdarkessecret(void)
+std::string	contact::getdarkestsecret(void)
 
 void	contact::displayindex(void)//todo
 void	Contact::displayDetails(int idx)//TODO

@@ -11,6 +11,13 @@ PhoneBook::~PhoneBook()
     std::cout << firstName << ": Destructor called" << std::endl;
 }
 
+//accessors
+void	PhoneBook::setContact(Contact entry)
+{
+	this->_contacts[idx % 8] = entry;
+}
+
+
 
 //helper: removes spaces and tabs
 static std::string	clear_space(std::string str)
@@ -34,6 +41,9 @@ static std::string	waitInput(std:string text)
 	return (buff);
 }
 
+//sets to 10 char string
+
+
 // commands:
 int	PhoneBook::askCmd();
 {
@@ -54,11 +64,30 @@ int	PhoneBook::askCmd();
 	return (0);
 }
 
-
-void	PhoneBook::add(void);
+void	PhoneBook::add(void)
 {
-	Contact	entry = Contract();
+	Contact	entry = Contact();
 
-	if (!entry.setFirstName(waitInput("first name: ")))
+	if(!entry.setFirstName(waitInput("First Name: ")))
 		return ;
+	if(!entry.setLastName(waitInput("Last Name: ")))
+		return ;
+	if(!entry.setNickName(waitInput("Nick Name: ")))
+		return ;
+	if(!entry.setPhoneNumber(waitInput("Phone Number: ")))
+		return ;
+	if(!entry.setDarkestSecret(waitInput("Darkest Secret: ")))
+		return ;
+	setContact(entry);
+	idx++;
+}
+
+
+void	PhoneBook::search(void)
+{
+	int		i;
+	Contact	entry;
+
+
+
 }

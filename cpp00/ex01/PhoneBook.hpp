@@ -15,8 +15,8 @@ class PhoneBook
 		void	search();//TODO
 		void	add();//TODO
 		//accessors
-		void	setContact(int idx);
-		void	getContact(int idx)
+		void	setContact(Contact entry);
+		void	getContact();
 
 	private:
 		Contact	_contacts[8];
