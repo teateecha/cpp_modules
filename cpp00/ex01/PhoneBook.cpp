@@ -1,5 +1,10 @@
 #include "PhoneBook.hpp"
-#include <string>
+#include <iostream>     // std::cout, std::endl
+#include <iomanip>      // std::setfill, std::setw
+#include <cstring>		// std::c_str
+#include <string>		// std::string,
+#include <stdlib.h>		// atoi
+
 
 PhoneBook::PhoneBook() : idx(0)
 {
@@ -8,44 +13,40 @@ PhoneBook::PhoneBook() : idx(0)
 
 PhoneBook::~PhoneBook()
 {
-    std::cout << firstName << ": Destructor called" << std::endl;
+    std::cout << "PhoneBook: Destructor called" << std::endl;
 }
 
 //accessors
-void	PhoneBook::setContact(Contact entry)
-{
-	this->_contacts[idx % 8] = entry;
-}
-
-
+// void	PhoneBook::setContact(Contact entry)
+// {
+// 	this->_contacts[idx % 8] = entry;
+// }
 
 //helper: removes spaces and tabs
 static std::string	clear_space(std::string str)
 {
-	for(int i = str.length() - 1, i >= 0, i--)
+	for(int i = str.length() - 1; i >= 0; i--)
 		if (str[i] == ' ' || str [i] == '\t')
 			str.erase(i, 1);
+	return (str);
 }
 
 //helper: writes prompts and returns inputstring without spaces
-static std::string	waitInput(std:string text)
+static std::string	waitInput(std::string text)
 {
 	std::string	buff;
 
 	while(buff.empty())
 	{
-		std::cout << text;
+		std::cout << text << " ";
 		std::getline(std::cin, buff);
 	}
 	clear_space(buff);
 	return (buff);
 }
 
-//sets to 10 char string
-
-
 // commands:
-int	PhoneBook::askCmd();
+int	PhoneBook::askCmd(void)
 {
 	std::string	cmd;
 
@@ -53,9 +54,9 @@ int	PhoneBook::askCmd();
 	{
 		cmd = waitInput("Please write: Do you want to ADD, SEARCH or EXIT?");
 		if (cmd == "ADD")
-			this.add();
+			this->add();
 		else if (cmd == "SEARCH")
-			this.search();
+			this->search();
 		else if (cmd == "EXIT")
 			break ;
 		else
@@ -66,28 +67,63 @@ int	PhoneBook::askCmd();
 
 void	PhoneBook::add(void)
 {
-	Contact	entry = Contact();
-
-	if(!entry.setFirstName(waitInput("First Name: ")))
+	if(!_contacts[idx % 8].setFirstName(waitInput("First Name: ")))
 		return ;
-	if(!entry.setLastName(waitInput("Last Name: ")))
+	if(!_contacts[idx % 8].setLastName(waitInput("Last Name: ")))
 		return ;
-	if(!entry.setNickName(waitInput("Nick Name: ")))
+	if(!_contacts[idx % 8].setNickName(waitInput("Nick Name: ")))
 		return ;
-	if(!entry.setPhoneNumber(waitInput("Phone Number: ")))
+	if(!_contacts[idx % 8].setPhoneNumber(waitInput("Phone Number: ")))
 		return ;
-	if(!entry.setDarkestSecret(waitInput("Darkest Secret: ")))
+	if(!_contacts[idx % 8].setDarkestSecret(waitInput("Darkest Secret: ")))
 		return ;
-	setContact(entry);
 	idx++;
 }
 
+//helper
+static void	putTruncated(std::string str)
+{
+	std::cout << "|";
+	if (str.empty() || str.length() < 10)
+	{
+		std::cout << std::setfill(' ') << std::setw(10);
+		std::cout << str;
+	}
+	else if (str.length() == 10)
+	{
+		std::cout << str;
+	}
+	else
+		std::cout << str.substr(0,9) << ".";
+}
 
 void	PhoneBook::search(void)
 {
-	int		i;
-	Contact	entry;
-
-
-
+	int			nbr;
+	std::string	index;
+	std::cout << std::left << std::setw(10);
+	std::cout << "index";
+	putTruncated("first name");
+	putTruncated("last name");
+	putTruncated("nickname");
+	std::cout << std::endl;
+	for  (int i = 0; i < 8; i++)
+	{
+		std::cout << std::left << std::setw(10);
+		std::cout << i;
+		putTruncated(_contacts[i].getFirstName());
+		putTruncated(_contacts[i].getLastName());
+		putTruncated(_contacts[i].getNickName());
+		std::cout << std::endl;
+	}
+	while (1)
+	{
+		index = waitInput("Insert index of Contact to display");
+		nbr = atoi(index.c_str());
+		if (nbr < 0 || nbr > 7)
+			std::cout << "wrong input try again" << std::endl;
+		else
+			break;
+	}
+	_contacts[nbr].displayDetails();
 }

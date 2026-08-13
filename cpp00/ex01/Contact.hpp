@@ -1,6 +1,7 @@
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
+#include <iostream>
 class Contact
 {
     public:
@@ -16,8 +17,7 @@ class Contact
 		bool		setNickName(std::string nn);
 		bool		setPhoneNumber(std::string pn);
 		bool		setDarkestSecret(std::string ds);
-		void		displayIndex(void);//TODO
-		void		displayDetails(int idx);//TODO
+		void		displayDetails(void);
 
     private:
 		std::string	_firstName;

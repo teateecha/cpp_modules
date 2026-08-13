@@ -1,7 +1,7 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# include "Contact"
+# include "Contact.hpp"
 
 class PhoneBook
 {
@@ -15,7 +15,7 @@ class PhoneBook
 		void	search();//TODO
 		void	add();//TODO
 		//accessors
-		void	setContact(Contact entry);
+		// void	setContact(Contact entry);
 		void	getContact();
 
 	private:

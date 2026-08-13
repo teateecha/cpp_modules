@@ -5,6 +5,10 @@ CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 SRC			=	main.cpp \
 				Contact.cpp \
 				PhoneBook.cpp
+
+INC			=	Contact.hpp \
+				PhoneBook.hpp
+
 OBJ			=	$(SRC:.c=.o)
 
 all:	$(NAME)

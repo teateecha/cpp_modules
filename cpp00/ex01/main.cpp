@@ -3,7 +3,7 @@
 
 int	main(void)
 {
-	PhoneBook	phbook = PhoneBook();
+	PhoneBook	phbook;
 	int			retu;
 
 	std::cout << "Welcome to your phonebook!" << std::endl;

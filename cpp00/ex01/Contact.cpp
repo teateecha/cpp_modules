@@ -3,13 +3,16 @@
 //Constructor
 Contact::Contact(void)
 {
-	std::cout << _firstName << ": Constructor called" << std::endl;
+	std::cout << "Contact: Constructor called" << std::endl;
 }
 
 //Destructor
 Contact::~Contact()
 {
-    std::cout << _firstName << ": Destructor called" << std::endl;
+	if (_firstName.empty())
+		std::cout << "Contact: Destructor called" << std::endl;
+	else
+		std::cout << _firstName << ": Destructor called" << std::endl;
 }
 
 // Setter
@@ -41,8 +44,7 @@ bool	Contact::setPhoneNumber(std::string pn)
 {
 	if (pn.empty())
 		return (false);
-	int	i = 0;
-	for (size_t i = 0, i < pn.length; i++)
+	for (size_t i = 0; i < pn.length(); i++)
 	{
 		if (i == 0 && pn[i] == '+')
 			i++ ;
@@ -62,30 +64,36 @@ bool	Contact::setDarkestSecret(std::string ds)
 }
 
 //setter
-std::string	Contact::getfirstname(void)
+std::string	Contact::getFirstName(void)
 {
 	return(this->_firstName);
 }
 
-std::string	Contact::getlastname(void)
+std::string	Contact::getLastName(void)
 {
 	return(this->_lastName);
 }
 
-std::string	Contact::getnickname(void)
+std::string	Contact::getNickName(void)
 {
 	return(this->_nickname);
 }
 
-std::string	Contact::getphonenumber(void)
+std::string	Contact::getPhoneNumber(void)
 {
 	return(this->_phoneNumber);
 }
 
-std::string	Contact::getdarkestsecret(void)
+std::string	Contact::getDarkestSecret(void)
 {
 	return(this->_darkestSecret);
 }
 
-void	contact::displayindex(void)//TODO
-void	Contact::displayDetails(int idx)//TODO
+void	Contact::displayDetails(void)
+{
+	std::cout << "first name: " << _firstName << std::endl;
+	std::cout << "last name: " << _lastName << std::endl;
+	std::cout << "nickname: " << _nickname << std::endl;
+	std::cout << "phone number: " << _phoneNumber << std::endl;
+	std::cout << "darkest secret: " << _darkestSecret << std::endl;
+}
