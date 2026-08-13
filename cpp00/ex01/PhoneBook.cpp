@@ -9,7 +9,7 @@
 
 PhoneBook::PhoneBook() : _idx(0)
 {
-	std::cout << "Phonebook: Constructor called" << std::endl;
+	std::cout << "PhoneBook: Constructor called" << std::endl;
 }
 
 PhoneBook::~PhoneBook()
@@ -17,7 +17,7 @@ PhoneBook::~PhoneBook()
     std::cout << "PhoneBook: Destructor called" << std::endl;
 }
 
-//helper: removes spaces and tabs
+// Helper: writes prompt and returns trimmed input
 static std::string	clear_space(std::string str)
 {
 	size_t	start;
@@ -52,7 +52,7 @@ int	PhoneBook::askCmd(void)
 
 	while (1)
 	{
-		cmd = waitInput("Please write: Do you want to ADD, SEARCH or EXIT?");
+		cmd = waitInput("Please enter ADD, SEARCH or EXIT");
 		if (cmd == "ADD")
 			this->add();
 		else if (cmd == "SEARCH")
@@ -60,7 +60,7 @@ int	PhoneBook::askCmd(void)
 		else if (cmd == "EXIT")
 			break ;
 		else
-			std::cout << "no match. try again" << std::endl;
+			std::cout << "No match. Try again" << std::endl;
 	}
 	return (0);
 }
@@ -71,10 +71,10 @@ void	PhoneBook::add(void)
 		return ;
 	if(!_contacts[_idx % PHSIZE].setLastName(waitInput("Last Name: ")))
 		return ;
-	if(!_contacts[_idx % PHSIZE].setNickName(waitInput("Nick Name: ")))
+	if(!_contacts[_idx % PHSIZE].setNickName(waitInput("Nickname: ")))
 		return ;
 	while(!_contacts[_idx % PHSIZE].setPhoneNumber(waitInput("Phone Number: ")));
-	if(!_contacts[_idx % PHSIZE].setDarkestSecret(waitInput("Darkest Secret: ")))
+	if(!_contacts[_idx % PHSIZE].setDarkestSecret(waitInput("Darkest secret: ")))
 		return ;
 	_idx++;
 }
@@ -131,15 +131,15 @@ void	PhoneBook::search(void)
 	this->printIndex(delimiter);
 	while (_idx > 0)
 	{
-		index = waitInput("Insert index of Contact to display");
+		index = waitInput("Enter index of the contact to display");
 		nbr = atoi(index.c_str());
 		if (index.length() > 1 || !isdigit(index[0]) || nbr < 0 || delimiter  <= nbr)
-			std::cout << "wrong input try again" << std::endl;
+			std::cout << "Wrong input. Try again." << std::endl;
 		else
 			break;
 	}
 	if (_idx > 0)
 		_contacts[nbr].displayDetails();
 	else
-		std::cout << "your phonebook is empty" << std::endl;
+		std::cout << "Your phonebook is empty" << std::endl;
 }

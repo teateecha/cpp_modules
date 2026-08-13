@@ -54,7 +54,7 @@ bool	Contact::setPhoneNumber(std::string pn)
 	{
 		if (!isdigit(pn[i]))
 		{
-			std::cout << "digits only! try again"  << std::endl;
+			std::cout << "Digits only! Try again"  << std::endl;
 			return (false);
 		}
 		i++;
@@ -99,9 +99,9 @@ std::string	Contact::getDarkestSecret(void)
 
 void	Contact::displayDetails(void)
 {
-	std::cout << "first name: " << _firstName << std::endl;
-	std::cout << "last name: " << _lastName << std::endl;
-	std::cout << "nickname: " << _nickname << std::endl;
-	std::cout << "phone number: " << _phoneNumber << std::endl;
-	std::cout << "darkest secret: " << _darkestSecret << std::endl;
+	std::cout << "First name: " << _firstName << std::endl;
+	std::cout << "Last name: " << _lastName << std::endl;
+	std::cout << "Nickname: " << _nickname << std::endl;
+	std::cout << "Phone number: " << _phoneNumber << std::endl;
+	std::cout << "Darkest secret: " << _darkestSecret << std::endl;
 }
