@@ -1,5 +1,7 @@
 #include "Contact.hpp"
 #include <iostream>/*for std*/
+#include <cctype>
+
 //Constructor
 Contact::Contact(void)
 {
@@ -42,14 +44,20 @@ bool	Contact::setNickName(std::string nn)
 
 bool	Contact::setPhoneNumber(std::string pn)
 {
+	size_t	i = 0;
+
 	if (pn.empty())
 		return (false);
-	for (size_t i = 0; i < pn.length(); i++)
+	if (pn[0] == '+' && pn.length() > 1)
+		i = 1;
+	while (i < pn.length())
 	{
-		if (i == 0 && pn[i] == '+')
-			i++ ;
-		else if (!isdigit(pn[i]))
+		if (!isdigit(pn[i]))
+		{
+			std::cout << "digits only! try again"  << std::endl;
 			return (false);
+		}
+		i++;
 	}
 	this->_phoneNumber = pn;
 	return (true);

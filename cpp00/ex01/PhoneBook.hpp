@@ -3,23 +3,28 @@
 
 # include "Contact.hpp"
 
+#define PHSIZE 8
+
+
 class PhoneBook
 {
     public:
-		int		idx;
         PhoneBook();
         ~PhoneBook();
 
+		//accessors
+		void	getContact(void);
+		//helper
+		void	printIndex(int delimiter);
 		//cmds
 		int		askCmd(void);
-		void	search();//TODO
-		void	add();//TODO
-		//accessors
-		// void	setContact(Contact entry);
-		void	getContact();
+		void	search(void);
+		void	add(void);
 
 	private:
-		Contact	_contacts[8];
+		Contact	_contacts[PHSIZE];
+		int		_idx;
+
 
 };
 

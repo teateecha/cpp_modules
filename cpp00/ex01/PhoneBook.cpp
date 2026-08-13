@@ -4,9 +4,10 @@
 #include <cstring>		// std::c_str
 #include <string>		// std::string,
 #include <stdlib.h>		// atoi
+#include <cctype>
 
 
-PhoneBook::PhoneBook() : idx(0)
+PhoneBook::PhoneBook() : _idx(0)
 {
 	std::cout << "Phonebook: Constructor called" << std::endl;
 }
@@ -16,19 +17,18 @@ PhoneBook::~PhoneBook()
     std::cout << "PhoneBook: Destructor called" << std::endl;
 }
 
-//accessors
-// void	PhoneBook::setContact(Contact entry)
-// {
-// 	this->_contacts[idx % 8] = entry;
-// }
-
 //helper: removes spaces and tabs
 static std::string	clear_space(std::string str)
 {
-	for(int i = str.length() - 1; i >= 0; i--)
-		if (str[i] == ' ' || str [i] == '\t')
-			str.erase(i, 1);
-	return (str);
+	size_t	start;
+	size_t	end;
+
+	start = str.find_first_not_of(" \t");
+	if (start == std::string::npos)
+		return ("");
+	end = str.find_last_not_of(" \t");
+
+	return (str.substr(start, end - start + 1));
 }
 
 //helper: writes prompts and returns inputstring without spaces
@@ -41,7 +41,7 @@ static std::string	waitInput(std::string text)
 		std::cout << text << " ";
 		std::getline(std::cin, buff);
 	}
-	clear_space(buff);
+	buff = clear_space(buff);
 	return (buff);
 }
 
@@ -67,17 +67,16 @@ int	PhoneBook::askCmd(void)
 
 void	PhoneBook::add(void)
 {
-	if(!_contacts[idx % 8].setFirstName(waitInput("First Name: ")))
+	if(!_contacts[_idx % PHSIZE].setFirstName(waitInput("First Name: ")))
 		return ;
-	if(!_contacts[idx % 8].setLastName(waitInput("Last Name: ")))
+	if(!_contacts[_idx % PHSIZE].setLastName(waitInput("Last Name: ")))
 		return ;
-	if(!_contacts[idx % 8].setNickName(waitInput("Nick Name: ")))
+	if(!_contacts[_idx % PHSIZE].setNickName(waitInput("Nick Name: ")))
 		return ;
-	if(!_contacts[idx % 8].setPhoneNumber(waitInput("Phone Number: ")))
+	while(!_contacts[_idx % PHSIZE].setPhoneNumber(waitInput("Phone Number: ")));
+	if(!_contacts[_idx % PHSIZE].setDarkestSecret(waitInput("Darkest Secret: ")))
 		return ;
-	if(!_contacts[idx % 8].setDarkestSecret(waitInput("Darkest Secret: ")))
-		return ;
-	idx++;
+	_idx++;
 }
 
 //helper
@@ -97,17 +96,16 @@ static void	putTruncated(std::string str)
 		std::cout << str.substr(0,9) << ".";
 }
 
-void	PhoneBook::search(void)
+void	PhoneBook::printIndex(int delimiter)
 {
-	int			nbr;
-	std::string	index;
 	std::cout << std::left << std::setw(10);
 	std::cout << "index";
 	putTruncated("first name");
 	putTruncated("last name");
 	putTruncated("nickname");
 	std::cout << std::endl;
-	for  (int i = 0; i < 8; i++)
+
+	for  (int i = 0; i < delimiter; i++)
 	{
 		std::cout << std::left << std::setw(10);
 		std::cout << i;
@@ -116,14 +114,32 @@ void	PhoneBook::search(void)
 		putTruncated(_contacts[i].getNickName());
 		std::cout << std::endl;
 	}
-	while (1)
+
+}
+
+void	PhoneBook::search(void)
+{
+	int			nbr;
+	std::string	index;
+	int	delimiter;
+
+	if (_idx < PHSIZE)
+		delimiter = _idx;
+	else
+		delimiter = PHSIZE;
+
+	this->printIndex(delimiter);
+	while (_idx > 0)
 	{
 		index = waitInput("Insert index of Contact to display");
 		nbr = atoi(index.c_str());
-		if (nbr < 0 || nbr > 7)
+		if (index.length() > 1 || !isdigit(index[0]) || nbr < 0 || delimiter  <= nbr)
 			std::cout << "wrong input try again" << std::endl;
 		else
 			break;
 	}
-	_contacts[nbr].displayDetails();
+	if (_idx > 0)
+		_contacts[nbr].displayDetails();
+	else
+		std::cout << "your phonebook is empty" << std::endl;
 }
