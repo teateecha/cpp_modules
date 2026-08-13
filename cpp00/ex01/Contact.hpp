@@ -6,11 +6,11 @@ class Contact
     public:
         Contact();
         ~Contact();
-		std::string	getFirstName(void);//TODO
-		std::string	getLastName(void);//TODO
-		std::string	getNickName(void);//TODO
-		std::string	getPhoneNumber(void);//TODO
-		std::string	getDarkestSecret(void);//TODO
+		std::string	getFirstName(void);
+		std::string	getLastName(void);
+		std::string	getNickName(void);
+		std::string	getPhoneNumber(void);
+		std::string	getDarkestSecret(void);
 		bool		setFirstName(std::string fn);
 		bool		setLastName(std::string  ln);
 		bool		setNickName(std::string nn);

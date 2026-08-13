@@ -61,12 +61,31 @@ bool	Contact::setDarkestSecret(std::string ds)
 	return (true);
 }
 
-// getter
-std::string	contact::getfirstname(void)
-std::string	contact::getlastname(void)
-std::string	contact::getnickname(void)
-std::string	contact::getphonenumber(void)
-std::string	contact::getdarkestsecret(void)
+//setter
+std::string	Contact::getfirstname(void)
+{
+	return(this->_firstName);
+}
 
-void	contact::displayindex(void)//todo
+std::string	Contact::getlastname(void)
+{
+	return(this->_lastName);
+}
+
+std::string	Contact::getnickname(void)
+{
+	return(this->_nickname);
+}
+
+std::string	Contact::getphonenumber(void)
+{
+	return(this->_phoneNumber);
+}
+
+std::string	Contact::getdarkestsecret(void)
+{
+	return(this->_darkestSecret);
+}
+
+void	contact::displayindex(void)//TODO
 void	Contact::displayDetails(int idx)//TODO
