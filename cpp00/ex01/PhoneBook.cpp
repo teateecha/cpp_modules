@@ -17,21 +17,21 @@ PhoneBook::~PhoneBook()
     std::cout << "PhoneBook: Destructor called" << std::endl;
 }
 
-// Helper: writes prompt and returns trimmed input
+///helper: Removes leading and trailing spaces and tabs from a string.
 static std::string	clear_space(std::string str)
 {
 	size_t	start;
 	size_t	end;
 
 	start = str.find_first_not_of(" \t");
-	if (start == std::string::npos)
+	if (start == std::string::npos)//end of string
 		return ("");
 	end = str.find_last_not_of(" \t");
 
 	return (str.substr(start, end - start + 1));
 }
 
-//helper: writes prompts and returns inputstring without spaces
+/// helper: Prompts untill non-empty input removes surrounding whitespace.
 static std::string	waitInput(std::string text)
 {
 	std::string	buff;
@@ -46,6 +46,7 @@ static std::string	waitInput(std::string text)
 }
 
 // commands:
+/// Repeatedly asks for and executes the ADD, SEARCH, or EXIT command.
 int	PhoneBook::askCmd(void)
 {
 	std::string	cmd;
@@ -65,6 +66,7 @@ int	PhoneBook::askCmd(void)
 	return (0);
 }
 
+/// Reads a new contact from user input and stores it in the phone book.
 void	PhoneBook::add(void)
 {
 	if(!_contacts[_idx % PHSIZE].setFirstName(waitInput("First Name: ")))
@@ -79,7 +81,7 @@ void	PhoneBook::add(void)
 	_idx++;
 }
 
-//helper
+///helper: Prints a string in a 10-character field and truncates longer strings with a dot.
 static void	putTruncated(std::string str)
 {
 	std::cout << "|";
@@ -96,6 +98,7 @@ static void	putTruncated(std::string str)
 		std::cout << str.substr(0,9) << ".";
 }
 
+/// Displays the contact list as a formatted table up to the given number of entries.
 void	PhoneBook::printIndex(int delimiter)
 {
 	std::cout << std::left << std::setw(10);
@@ -117,6 +120,7 @@ void	PhoneBook::printIndex(int delimiter)
 
 }
 
+/// Displays the contact table, asks for a valid index, and shows the selected contact.
 void	PhoneBook::search(void)
 {
 	int			nbr;

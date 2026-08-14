@@ -97,6 +97,7 @@ std::string	Contact::getDarkestSecret(void)
 	return(this->_darkestSecret);
 }
 
+// Displays all stored details of the contact.
 void	Contact::displayDetails(void)
 {
 	std::cout << "First name: " << _firstName << std::endl;
