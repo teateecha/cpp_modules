@@ -55,9 +55,9 @@ int	PhoneBook::askCmd(void)
 	{
 		cmd = waitInput("Please enter ADD, SEARCH or EXIT");
 		if (cmd == "ADD")
-			this->add();
+			this->_add();
 		else if (cmd == "SEARCH")
-			this->search();
+			this->_search();
 		else if (cmd == "EXIT")
 			break ;
 		else
@@ -67,7 +67,7 @@ int	PhoneBook::askCmd(void)
 }
 
 /// Reads a new contact from user input and stores it in the phone book.
-void	PhoneBook::add(void)
+void	PhoneBook::_add(void)
 {
 	if(!_contacts[_idx % PHSIZE].setFirstName(waitInput("First Name: ")))
 		return ;
@@ -121,7 +121,7 @@ void	PhoneBook::printIndex(int delimiter)
 }
 
 /// Displays the contact table, asks for a valid index, and shows the selected contact.
-void	PhoneBook::search(void)
+void	PhoneBook::_search(void)
 {
 	int			nbr;
 	std::string	index;

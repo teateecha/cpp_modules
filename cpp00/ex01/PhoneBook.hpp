@@ -18,12 +18,12 @@ class PhoneBook
 		void	printIndex(int delimiter);
 		//cmds
 		int		askCmd(void);
-		void	search(void);
-		void	add(void);
 
 	private:
 		Contact	_contacts[PHSIZE];
 		int		_idx;
+		void	_search(void);
+		void	_add(void);
 
 
 };
