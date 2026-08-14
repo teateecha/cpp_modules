@@ -13,13 +13,3 @@ int	main(void)
 	std::cout << "stringREF\t" << &stringREF << "\t"  << stringREF << std::endl;
 	return (0);
 }
-/*
-Your program must print:
-• The memory address of the string stringVAR.
-• The memory address held by stringPTR.
-• The memory address held by stringREF.
-And then:
-• The value of the string variable.
-• The value pointed to by stringPTR.
-• The value pointed to by stringREF.
-*/

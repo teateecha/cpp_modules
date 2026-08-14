@@ -1,5 +1,5 @@
 NAME		=	megaphone
-CC			=	c++ #check if this is the right compiler
+CC			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 
 SRC			=	megaphone.cpp
