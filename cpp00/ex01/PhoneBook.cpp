@@ -99,7 +99,7 @@ static void	putTruncated(std::string str)
 }
 
 /// Displays the contact list as a formatted table up to the given number of entries.
-void	PhoneBook::printIndex(int delimiter)
+void	PhoneBook::_printIndex(int delimiter)
 {
 	std::cout << std::left << std::setw(10);
 	std::cout << "index";
@@ -132,7 +132,7 @@ void	PhoneBook::_search(void)
 	else
 		delimiter = PHSIZE;
 
-	this->printIndex(delimiter);
+	this->_printIndex(delimiter);
 	while (_idx > 0)
 	{
 		index = waitInput("Enter index of the contact to display");

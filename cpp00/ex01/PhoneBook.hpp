@@ -12,11 +12,6 @@ class PhoneBook
         PhoneBook();
         ~PhoneBook();
 
-		//accessors
-		void	getContact(void);
-		//helper
-		void	printIndex(int delimiter);
-		//cmds
 		int		askCmd(void);
 
 	private:
@@ -24,6 +19,7 @@ class PhoneBook
 		int		_idx;
 		void	_search(void);
 		void	_add(void);
+		void	_printIndex(int delimiter);
 
 
 };
