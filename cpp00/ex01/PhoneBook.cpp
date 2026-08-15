@@ -39,7 +39,8 @@ static std::string	waitInput(std::string text)
 	while(buff.empty())
 	{
 		std::cout << text << " ";
-		std::getline(std::cin, buff);
+		if (!std::getline(std::cin, buff))
+			return (buff) ;
 	}
 	buff = clear_space(buff);
 	return (buff);
@@ -60,6 +61,8 @@ int	PhoneBook::askCmd(void)
 			this->_search();
 		else if (cmd == "EXIT")
 			break ;
+		else if (cmd.empty())
+			return (1);
 		else
 			std::cout << "No match. Try again" << std::endl;
 	}
