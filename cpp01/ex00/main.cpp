@@ -16,10 +16,10 @@ void randomChump(std::string name)
 
 int	main(void)
 {
-	Zombie *ayumi = newZombie("Ayumi");
+	Zombie *anna = newZombie("Anna");
 	randomChump("Bob");
 	
-	ayumi->announce();
-	delete ayumi;
+	anna->announce();
+	delete anna;
 	return (0);
 }
