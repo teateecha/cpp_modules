@@ -22,3 +22,5 @@ For uniformity the CppCoreGuidelines where followed.
 - form `<string>`
 	- [str::length](https://cplusplus.com/reference/string/string/length/)
 	- [str::erase](https://cplusplus.com/reference/string/string/erase/)
+- files
+	- [open a file](https://cplusplus.com/doc/tutorial/files/)
