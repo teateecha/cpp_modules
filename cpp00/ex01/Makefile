@@ -1,6 +1,7 @@
 NAME		=	phonebook
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98
+# compile flags with .d output to check for changes in headers
+CFLAGS		=	-Wall -Wextra -Werror -MMD -MP -std=c++98
 
 SRC			=	main.cpp \
 				Contact.cpp \
