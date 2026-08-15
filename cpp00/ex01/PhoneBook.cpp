@@ -104,7 +104,7 @@ static void	putTruncated(std::string str)
 /// Displays the contact list as a formatted table up to the given number of entries.
 void	PhoneBook::_printIndex(int delimiter)
 {
-	std::cout << std::left << std::setw(10);
+	std::cout << std::right << std::setw(10);
 	std::cout << "index";
 	putTruncated("first name");
 	putTruncated("last name");
@@ -113,7 +113,7 @@ void	PhoneBook::_printIndex(int delimiter)
 
 	for  (int i = 0; i < delimiter; i++)
 	{
-		std::cout << std::left << std::setw(10);
+		std::cout << std::right << std::setw(10);
 		std::cout << i;
 		putTruncated(_contacts[i].getFirstName());
 		putTruncated(_contacts[i].getLastName());
