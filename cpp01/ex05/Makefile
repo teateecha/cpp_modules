@@ -5,7 +5,7 @@ CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 SRC			=	main.cpp \
 				Harl.cpp
 
-OBJ			=	$(SRC:.c=.o)
+OBJ			=	$(SRC:.cpp=.o)
 
 all:	$(NAME)
 

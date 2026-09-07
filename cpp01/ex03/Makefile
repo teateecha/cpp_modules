@@ -7,7 +7,7 @@ SRC			=	main.cpp \
 				HumanA.cpp \
 				HumanB.cpp
 
-OBJ			=	$(SRC:.c=.o)
+OBJ			=	$(SRC:.cpp=.o)
 
 all:	$(NAME)
 

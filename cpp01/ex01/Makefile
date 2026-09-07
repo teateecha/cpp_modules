@@ -8,7 +8,7 @@ SRC			=	main.cpp \
 
 INC			=	Zombie.hpp \
 
-OBJ			=	$(SRC:.c=.o)
+OBJ			=	$(SRC:.cpp=.o)
 
 all:	$(NAME)
 
