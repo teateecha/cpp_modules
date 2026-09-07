@@ -1,6 +1,5 @@
 #ifndef HUMANB_HPP
 #define HUMANB_HPP
-# include <iostream>	//for std
 # include <string>	//for std::string
 # include "Weapon.hpp"	//for weapon
 
