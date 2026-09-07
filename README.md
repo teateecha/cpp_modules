@@ -2,14 +2,17 @@
 ### overview of concepts
 ```mermaid
 	flowchart LR
-		subgraph cpp00
-			Class private
-
+		subgraph "cpp00"
+			Class
+      private
 		end
 		subgraph cpp01
 			all["allocation:
 			new and delte"]
 		end
+    subgraph cpp01
+      form("orthodox canonical form")
+    end
 ```
 
 ## norm
@@ -24,3 +27,5 @@ For uniformity the CppCoreGuidelines where followed.
 	- [str::erase](https://cplusplus.com/reference/string/string/erase/)
 - files
 	- [open a file](https://cplusplus.com/doc/tutorial/files/)
+- orthodox canonical form
+  - [copy assingment operaotr](https://en.cppreference.com/cpp/language/copy_assignment)
