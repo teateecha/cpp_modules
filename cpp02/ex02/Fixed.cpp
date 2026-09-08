@@ -69,7 +69,6 @@ std::ostream&	operator<<(std::ostream& o, Fixed const& rhs)
 	return (o);
 }
 
-
 bool	Fixed::operator>(Fixed const& rhs) const
 {
 	return (_value > rhs._value);
@@ -78,6 +77,16 @@ bool	Fixed::operator>(Fixed const& rhs) const
 bool	Fixed::operator<(Fixed const& rhs) const
 {
 	return (_value < rhs._value);
+}
+
+bool	Fixed::operator>=(Fixed const& rhs) const
+{
+	return (_value >= rhs._value);
+}
+
+bool	Fixed::operator<=(Fixed const& rhs) const
+{
+	return (_value <= rhs._value);
 }
 
 bool	Fixed::operator==(Fixed const& rhs) const
@@ -108,21 +117,19 @@ Fixed	Fixed::operator-(Fixed const& rhs) const
 
 Fixed	Fixed::operator*(Fixed const& rhs) const
 {
-	Fixed 		temp;
-	long long	raw;
+	Fixed	temp;
 
-	raw = static_cast<long long>(_value) * rhs._value;
-	temp._value = raw >> _fractionalBits;
+	temp._value = _value * rhs._value;
+	temp._value = temp._value >> _fractionalBits;
 	return(temp);
 }
 
 Fixed	Fixed::operator/(Fixed const& rhs) const
 {
-	Fixed 		temp;
-	long long	raw;
+	Fixed	temp;
 
-	raw = static_cast<long long>(_value) << _fractionalBits;
-	temp._value = raw / rhs._value;
+	temp._value = _value << _fractionalBits;
+	temp._value = temp._value / rhs._value;
 	return(temp);
 }
 
