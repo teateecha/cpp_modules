@@ -29,3 +29,4 @@ For uniformity the CppCoreGuidelines where followed.
 	- [open a file](https://cplusplus.com/doc/tutorial/files/)
 - orthodox canonical form
   - [copy assingment operaotr](https://en.cppreference.com/cpp/language/copy_assignment)
+- operator overload [pre and post increment](https://en.cppreference.com/cpp/language/operators)
