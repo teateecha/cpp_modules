@@ -6,8 +6,6 @@ SRC			=	main.cpp \
 				Zombie.cpp \
 				zombieHorde.cpp
 
-INC			=	Zombie.hpp \
-
 OBJ			=	$(SRC:.cpp=.o)
 
 all:	$(NAME)
