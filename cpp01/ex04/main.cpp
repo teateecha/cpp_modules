@@ -20,8 +20,6 @@ static int	ft_replace(std::ifstream & inputfile, std::ofstream & output,
 	std::string::size_type	olength;
 	std::string::size_type	found;
 
-	if (s1.empty())
-		return (complainAndReturn("s1 is empty", 1));
 	ilength = s1.length();
 	olength = s2.length();
 	while (std::getline(inputfile, line))
@@ -57,6 +55,7 @@ int	main(int argc, char **argv)
 
 	if (std::string(argv[2]).empty())
 		return (complainAndReturn("empty strings"), 1)
+
 	std::string	outputName = std::string(argv[1]) + ".replace";
 	std::ofstream	output(outputName.c_str());
 	if (!output.is_open())
