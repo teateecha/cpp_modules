@@ -4,7 +4,6 @@ CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 
 SRC			=	main.cpp \
 				Zombie.cpp
-INC			=	Zombie.hpp \
 
 OBJ			=	$(SRC:.cpp=.o)
 
