@@ -1,6 +1,5 @@
 #include "Zombie.hpp"
 
-/*TODO research delete[]*/
 int	main(void)
 {
 	Zombie* horde = zombieHorde(5, "Helga");
