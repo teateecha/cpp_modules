@@ -101,32 +101,42 @@ bool	Fixed::operator!=(Fixed const& rhs) const
 
 Fixed	Fixed::operator+(Fixed const& rhs) const
 {
-	Fixed temp;
-
-	temp._value = _value + rhs._value;
-	return(temp);
+	return(Fixed(_value + rhs._value));
 }
 
 Fixed	Fixed::operator-(Fixed const& rhs) const
 {
-	Fixed temp;
-
-	temp._value = _value - rhs._value;
-	return(temp);
+	return(Fixed(_value - rhs._value));
 }
 
-//not efficient but required by the subject
-//for efficiency use long long to prevent int overflow.
 Fixed	Fixed::operator*(Fixed const& rhs) const
 {
-	return (Fixed(this->toFloat() * rhs.toFloat()));
+	long	raw;
+
+	raw = static_cast<long>(_value) * rhs._value;
+	return(Fixed(static_cast<int>(raw >> _fractionalBits)));
 }
 
-//not efficient but required by the subject
-//for efficiency use long long to prevent int overflow.
+//better use long long - but forbidden by the subject
+Fixed	Fixed::operator*(Fixed const& rhs) const
+{
+	Fixed	temp;
+	long	raw;
+
+	raw = static_cast<long>(_value) * rhs._value;
+	temp._value = static_cast<int>(raw >> _fractionalBits);
+	return (temp);
+}
+
+//better use long long - but forbidden by the subject
 Fixed	Fixed::operator/(Fixed const& rhs) const
 {
-	return (Fixed(this->toFloat() / rhs.toFloat()));
+	Fixed	temp;
+	long	raw;
+
+	raw = static_cast<long>(_value) << _fractionalBits;
+	temp._value = static_cast<int>(_value / rhs._value);
+	return (temp);
 }
 
 
