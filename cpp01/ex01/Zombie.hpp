@@ -1,12 +1,12 @@
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
-# include <string>/*for std::string*/
+# include <string>//for std::string
 
 class Zombie
 {
 	public:
 		
-		Zombie();/*default constructor*/
+		Zombie();//default constructor
 		Zombie(std::string iname);
 		~Zombie();
 		void	announce(void);
