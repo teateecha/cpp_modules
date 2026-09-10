@@ -55,9 +55,11 @@ int	main(int argc, char **argv)
 	if (!inputfile.is_open())
 		return (complainAndReturn("input file not readable", 1));
 
+	if (std::string(argv[2]).empty())
+		return (complainAndReturn("empty strings"), 1)
 	std::string	outputName = std::string(argv[1]) + ".replace";
 	std::ofstream	output(outputName.c_str());
-	if (!output.is_open() || output.empty())
+	if (!output.is_open())
 		return (complainAndReturn("output file not created", 1));
 
 	retu = ft_replace (inputfile, output, argv[2], argv[3]);
