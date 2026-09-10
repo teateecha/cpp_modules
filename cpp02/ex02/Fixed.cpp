@@ -115,22 +115,18 @@ Fixed	Fixed::operator-(Fixed const& rhs) const
 	return(temp);
 }
 
+//not efficient but required by the subject
+//for efficiency use long long to prevent int overflow.
 Fixed	Fixed::operator*(Fixed const& rhs) const
 {
-	Fixed	temp;
-
-	temp._value = _value * rhs._value;
-	temp._value = temp._value >> _fractionalBits;
-	return(temp);
+	return (Fixed(this->toFloat() * rhs.toFloat()));
 }
 
+//not efficient but required by the subject
+//for efficiency use long long to prevent int overflow.
 Fixed	Fixed::operator/(Fixed const& rhs) const
 {
-	Fixed	temp;
-
-	temp._value = _value << _fractionalBits;
-	temp._value = temp._value / rhs._value;
-	return(temp);
+	return (Fixed(this->toFloat() / rhs.toFloat()));
 }
 
 
