@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 		return (complainAndReturn("input file not readable", 1));
 
 	if (std::string(argv[2]).empty())
-		return (complainAndReturn("empty strings"), 1)
+		return (complainAndReturn("empty strings", 1));
 
 	std::string	outputName = std::string(argv[1]) + ".replace";
 	std::ofstream	output(outputName.c_str());
