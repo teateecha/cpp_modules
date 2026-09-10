@@ -12,7 +12,7 @@ static int	complainAndReturn(std::string str, int retu)
 }
 
 ///reads from input stream line by line
-static int	replace(std::ifstream & inputfile, std::ofstream & output,
+static int	ft_replace(std::ifstream & inputfile, std::ofstream & output,
 		std::string const & s1, std::string const & s2)
 {
 	std::string				line;
@@ -44,7 +44,7 @@ static int	replace(std::ifstream & inputfile, std::ofstream & output,
 	return (0);
 }
 
-///reads from inputfilestream, replaces s1 with s2 and writes to outputfilesteram
+///reads from inputfilestream, ft_replaces s1 with s2 and writes to outputfilesteram
 int	main(int argc, char **argv)
 {
 	int	retu;
@@ -55,12 +55,12 @@ int	main(int argc, char **argv)
 	if (!inputfile.is_open())
 		return (complainAndReturn("input file not readable", 1));
 
-	std::string	outputName = std::string(argv[1]) + ".replace";
+	std::string	outputName = std::string(argv[1]) + ".ft_replace";
 	std::ofstream	output(outputName.c_str());
 	if (!output.is_open())
 		return (complainAndReturn("output file not created", 1));
 
-	retu = replace (inputfile, output, argv[2], argv[3]);
+	retu = ft_replace (inputfile, output, argv[2], argv[3]);
 	inputfile.close();
 	output.close();
 	return (retu);
