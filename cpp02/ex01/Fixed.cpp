@@ -60,7 +60,7 @@ float	Fixed::toFloat(void) const
 
 int		Fixed::toInt(void) const
 {
-	return (_value >> _fractionalBits);
+	return (_value 1 / (1 << _fractionalBits));
 }
 
 std::ostream&	operator<<(std::ostream& o, Fixed const& rhs)
