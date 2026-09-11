@@ -32,7 +32,7 @@ int	main(void)
 	harl.complain("ERROR");
 	std::cout << "\n that's it Harl is done complaining" << std::endl;
 
-	std::cout << "\n\n your turn now: you are allowd one complaint:" << std::endl;
+	std::cout << "\n\nYour turn now: you’re allowed one complaint." << std::endl;
 	harl.complain(waitInput("Enter harl level: DEBUG, INFO, WARNING or ERROR: "));
 	return (0);
 }
