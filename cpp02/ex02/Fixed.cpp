@@ -132,7 +132,7 @@ Fixed	Fixed::operator/(Fixed const& rhs) const
 	long	raw;
 
 	raw = static_cast<long>(_value) << _fractionalBits;
-	temp._value = static_cast<int>(_value / rhs._value);
+	temp._value = static_cast<int>(raw / rhs._value);
 	return (temp);
 }
 
@@ -197,3 +197,4 @@ Fixed const&	Fixed::max(Fixed const& a, Fixed const& b)
 	else
 	 return (a);
 }
+
