@@ -54,7 +54,9 @@ void	Harl::complain(std::string level)
 		if (level == message[i])
 		{
 			(this->*functions[i])();
-			break;
+			return ;
 		}
 	}
+
+	std::cout << "Apparently, your complaint was insignificant." << std::endl;
 }
