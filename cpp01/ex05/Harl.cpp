@@ -58,5 +58,5 @@ void	Harl::complain(std::string level)
 		}
 	}
 
-	std::cout << "Apparently, your complaint was insignificant." << std::endl;
+	std::cout << "No level matched. Apparently, your complaint was insignificant." << std::endl;
 }
