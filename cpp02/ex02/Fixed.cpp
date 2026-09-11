@@ -109,14 +109,6 @@ Fixed	Fixed::operator-(Fixed const& rhs) const
 	return(Fixed(_value - rhs._value));
 }
 
-Fixed	Fixed::operator*(Fixed const& rhs) const
-{
-	long	raw;
-
-	raw = static_cast<long>(_value) * rhs._value;
-	return(Fixed(static_cast<int>(raw >> _fractionalBits)));
-}
-
 //better use long long - but forbidden by the subject
 Fixed	Fixed::operator*(Fixed const& rhs) const
 {
