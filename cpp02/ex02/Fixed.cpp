@@ -51,7 +51,6 @@ void	Fixed::setRawBits(int const raw)
 	_value = raw;
 }
 
-
 float	Fixed::toFloat(void) const
 {
 	return (static_cast<float>(_value) / (1  << _fractionalBits));
@@ -101,12 +100,18 @@ bool	Fixed::operator!=(Fixed const& rhs) const
 
 Fixed	Fixed::operator+(Fixed const& rhs) const
 {
-	return(Fixed(_value + rhs._value));
+	Fixed	temp;
+
+	temp._value = _value + rhs._value;
+	return(temp);
 }
 
 Fixed	Fixed::operator-(Fixed const& rhs) const
 {
-	return(Fixed(_value - rhs._value));
+	Fixed	temp;
+
+	temp._value = _value - rhs._value;
+	return(temp);
 }
 
 //better use long long - but forbidden by the subject
