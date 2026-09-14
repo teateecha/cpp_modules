@@ -60,3 +60,33 @@ void	Harl::complain(std::string level)
 
 	std::cout << "No level matched. Apparently, your complaint was insignificant." << std::endl;
 }
+
+
+// void	Harl::complain(std::string level)
+// {
+// 	std::string	message[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+// 	int			levelnbr = 0;
+//
+// 	while ( levelnbr < 4 && level != message[levelnbr])
+// 		levelnbr++;
+//
+// 	switch (levelnbr)
+// 	{
+// 		case 0:
+// 			Harl::debug();
+// 			break ;
+// 		case 1:
+// 			Harl::info();
+// 			break ;
+// 		case 2:
+// 			Harl::warning();
+// 			break ;
+// 		case 3:
+// 			Harl::error();
+// 			break ;
+// 		default:
+// 			std::cout << "No level matched. Apparently, your complaint was insignificant." << std::endl;
+// 			break;
+// 	}
+// }
+//
