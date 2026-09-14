@@ -27,3 +27,9 @@ int	main(int argc, char **argv)
 	output.close();
 	return (retu);
 }
+
+// for testing:
+// ./replaceString ../../testfile  lo ">>>> giggle <<<<" && cat ../../testfile.replace
+// ./replaceString ../../testfile.replace  giggle "" && cat ../../testfile.replace.replace
+// ./replaceString nonexistend word otherword
+
