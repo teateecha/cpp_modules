@@ -29,7 +29,9 @@ int	main(void)
 	std::cout << "\n ----ScavTrap TEST ---\n";
 	ScavTrap	sonya("Sonya");
 
+	sonya.attack(victim); //should show 20 damage
 	sonya.guardGate();
 
+	std::cout << "\n DESTRUCTORS: --- " << std::endl;
 	return (0);
 }
