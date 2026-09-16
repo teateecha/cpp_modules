@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ScavTrap.hpp" //has ClapTrap included
+#include "FragTrap.hpp"
 
 int	main(void)
 {
@@ -30,7 +31,16 @@ int	main(void)
 	ScavTrap	sonya("Sonya");
 
 	sonya.attack(victim); //should show 20 damage
+	sonya.beRepaired(1);
 	sonya.guardGate();
+
+	std::cout << "\n ----FragTrap TEST ---\n";
+	FragTrap	finn("Finn");
+
+	finn.highFiveGuys();
+	finn.attack(victim);
+	finn.beRepaired(30);
+	finn.takeDamage(40);
 
 	std::cout << "\n DESTRUCTORS: --- " << std::endl;
 	return (0);
