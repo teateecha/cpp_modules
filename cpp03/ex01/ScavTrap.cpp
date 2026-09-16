@@ -1,4 +1,5 @@
 #include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 #include <iostream>
 
 // Constructor
@@ -22,8 +23,8 @@ ScavTrap::ScavTrap(std::string name)
 
 // Copy constructor
 ScavTrap::ScavTrap(const ScavTrap& other)
+	: ClapTrap(other)
 {
-	*this = other;
 	std::cout << "ScavTrap " << _name << ": copy-constructed." << std::endl;
 }
 
@@ -32,7 +33,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 {
 	if (this != &other)
 	{
-		_name = other._name;
+		ClapTrap::operator=(other);//reuse parent assignment operator
 	}
 	return *this;
 }
@@ -45,7 +46,7 @@ ScavTrap::~ScavTrap()
 
 
 
-void	ClapTrap::attack(const std::string& target)
+void	ScavTrap::attack(const std::string& target)
 {
 	if (_hitPoints == 0)
 		std::cout << "ScavTrap "
@@ -72,5 +73,6 @@ void	ClapTrap::attack(const std::string& target)
 
 void	ScavTrap::guardGate(void)
 {
-	std::cout << "ScavTrap" << _name << "is now in Gate keeper mode." << std::endl;
+	std::cout << "ScavTrap " << _name
+		<< " is now in Gate keeper mode." << std::endl;
 }
