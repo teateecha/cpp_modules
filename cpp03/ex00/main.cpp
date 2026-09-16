@@ -17,11 +17,14 @@ int	main(void)
 	std::cout << "\n--- ENERGY TEST ---\n";
 	ClapTrap anna("Anna");
 
-	for (int i = 0; i < 11; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		std::cout << "Attack " << i + 1 << ": ";
 		anna.attack(victim);
 	}
+
+	anna.beRepaired(5);
+	anna.attack(victim);
 
 	return (0);
 }
