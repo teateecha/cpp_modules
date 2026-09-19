@@ -1,6 +1,5 @@
 #include <iostream>
-#include "ScavTrap.hpp" //has ClapTrap included
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main(void)
 {
@@ -41,6 +40,12 @@ int	main(void)
 	finn.attack(victim);
 	finn.beRepaired(30);
 	finn.takeDamage(40);
+	std::cout << "\n ----DiamondTrap TEST ---\n";
+	DiamondTrap d("Diamond");
+	d.whoAmI();
+	d.attack(victim);       // ScavTrap attack
+	d.guardGate();
+	d.highFivesGuys();
 
 	std::cout << "\n DESTRUCTORS: --- " << std::endl;
 	return (0);
