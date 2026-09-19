@@ -26,5 +26,11 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+shadow: CFLAGS += -Wshadow
+shadow: re
+
+valgrind: re
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
+
+.PHONY: all clean fclean re shadow valgrind
 
