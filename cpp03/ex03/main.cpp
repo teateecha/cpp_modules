@@ -48,6 +48,12 @@ int	main(void)
 	d.highFivesGuys();
 	d.takeDamage(20);
 	d.beRepaired(10);
+	DiamondTrap copy(d);
+	copy.whoAmI();
+
+DiamondTrap other("Other");
+other = d;
+other.whoAmI();
 
 	std::cout << "\n DESTRUCTORS: --- " << std::endl;
 	return (0);
