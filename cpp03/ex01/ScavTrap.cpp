@@ -53,7 +53,7 @@ void	ScavTrap::attack(const std::string& target)
 			<< _name
 			<< " cannot attack: no hit points left." << std::endl;
 	else if (_energyPoints == 0)
-		std::cout << "ClapTrap "
+		std::cout << "ScavTrap "
 			<< _name
 			<< " cannot attack: no energy points left." << std::endl;
 	else
