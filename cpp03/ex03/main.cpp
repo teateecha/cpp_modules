@@ -41,11 +41,13 @@ int	main(void)
 	finn.beRepaired(30);
 	finn.takeDamage(40);
 	std::cout << "\n ----DiamondTrap TEST ---\n";
-	DiamondTrap d("Diamond");
+	DiamondTrap d("Didi");
 	d.whoAmI();
 	d.attack(victim);       // ScavTrap attack
 	d.guardGate();
 	d.highFivesGuys();
+	d.takeDamage(20);
+	d.beRepaired(10);
 
 	std::cout << "\n DESTRUCTORS: --- " << std::endl;
 	return (0);
