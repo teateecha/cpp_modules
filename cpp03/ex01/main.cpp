@@ -1,5 +1,5 @@
-#include "ClapTrap.hpp"
 #include <iostream>
+#include "ScavTrap.hpp" //has ClapTrap included
 
 int	main(void)
 {
@@ -12,7 +12,7 @@ int	main(void)
 	felix.takeDamage(5);
 	felix.beRepaired(1);
 	felix.takeDamage(7);
-	felix.attack(victim);
+	felix.attack(victim); // no hit points left
 
 	std::cout << "\n--- ENERGY TEST ---\n";
 	ClapTrap anna("Anna");
@@ -23,8 +23,15 @@ int	main(void)
 		anna.attack(victim);
 	}
 
-	anna.beRepaired(5);
-	anna.attack(victim);
+	anna.beRepaired(5); // no energy points left
+	anna.attack(victim); // no energy points left
 
+	std::cout << "\n ----ScavTrap TEST ---\n";
+	ScavTrap	sonya("Sonya");
+
+	sonya.attack(victim); //should show 20 damage
+	sonya.guardGate();
+
+	std::cout << "\n DESTRUCTORS: --- " << std::endl;
 	return (0);
 }
