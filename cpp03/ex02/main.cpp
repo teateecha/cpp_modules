@@ -37,7 +37,7 @@ int	main(void)
 	std::cout << "\n ----FragTrap TEST ---\n";
 	FragTrap	finn("Finn");
 
-	finn.highFiveGuys();
+	finn.highFivesGuys();
 	finn.attack(victim);
 	finn.beRepaired(30);
 	finn.takeDamage(40);
