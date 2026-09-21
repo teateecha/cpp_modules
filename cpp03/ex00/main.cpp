@@ -6,16 +6,16 @@ int	main(void)
 	const std::string	victim = "Victim Tom";
 
 	{
-	std::cout << "\n--- DAMAGE / DEATH TEST ---\n";
-	ClapTrap felix("Felix");
-	felix.attack(victim);
-	felix.takeDamage(5);
-	ClapTrap copy_of_felix(felix);
-	felix.beRepaired(1);
-	felix.takeDamage(7);
-	felix.attack(victim); // no hit points left
-	copy_of_felix.beRepaired(5);// this will work
-	std::cout << "\n DESTRUCTOR: --- " << std::endl;
+		std::cout << "\n--- DAMAGE / DEATH TEST ---\n";
+		ClapTrap felix("Felix");
+		felix.attack(victim);
+		felix.takeDamage(5);
+		ClapTrap copy_of_felix(felix);
+		felix.beRepaired(1);
+		felix.takeDamage(7);
+		felix.attack(victim); // no hit points left
+		copy_of_felix.beRepaired(5);// this will work
+		std::cout << "\n DESTRUCTOR: --- " << std::endl;
 	}
 
 	std::cout << "\n--- ENERGY TEST ---\n";
