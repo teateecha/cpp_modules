@@ -51,9 +51,9 @@ int	main(void)
 	DiamondTrap copy(d);
 	copy.whoAmI();
 
-DiamondTrap other("Other");
-other = d;
-other.whoAmI();
+	DiamondTrap other("Other");
+	other = d;
+	other.whoAmI();
 
 	std::cout << "\n DESTRUCTORS: --- " << std::endl;
 	return (0);
