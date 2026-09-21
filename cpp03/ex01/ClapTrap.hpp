@@ -16,7 +16,7 @@ class ClapTrap
 		void			takeDamage(unsigned int amount);
 		void			beRepaired(unsigned int amount);
 
-	protected:
+	protected://so that ScavTrap can inheret this.
 		std::string		_name;
 		unsigned int	_hitPoints;
 		unsigned int	_energyPoints;
