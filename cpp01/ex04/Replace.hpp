@@ -1,6 +1,8 @@
 #ifndef REPLACE_HPP
 #define REPLACE_HPP
 #include <iostream>	//for std
+# include <string>
+# include <fstream>
 
 int	complainAndReturn(std::string str, int retu);
 int	ft_replace(std::ifstream & inputfile, std::ofstream & output,
