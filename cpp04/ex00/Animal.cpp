@@ -3,7 +3,7 @@
 
 // Constructor
 Animal::Animal()
-	: type("Animal")
+	: _type("Animal")
 {
 	std::cout << "Animal: Constructor called" << std::endl;
 }
@@ -19,7 +19,7 @@ Animal& Animal::operator=(const Animal& other)
 {
 	if (this != &other)
 	{
-		type = other.type;
+		_type = other._type;
 	}
 	return *this;
 }
@@ -33,4 +33,9 @@ Animal::~Animal()
 void	Animal::makeSound(void)
 {
 	std::cout << "Animal speaking here." << std::endl;
+}
+
+std::string	Animal::getType(void)
+{
+	return (_type);
 }

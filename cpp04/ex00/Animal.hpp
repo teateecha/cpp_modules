@@ -9,10 +9,12 @@ class Animal
 		Animal(const Animal& other);
 		Animal& operator=(const Animal& other);
 		~Animal();
+
+		std::string	getType(void) const;
 		
-		virtual void	makeSound(void);
 	protected:
-		std::string		type;
+		std::string		_type;
+		virtual void	makeSound(void);
 };
 
 #endif

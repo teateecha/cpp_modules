@@ -1,9 +1,11 @@
 #include <iostream>
-#include "Animal.h"
+#include "Cat.hpp"
+#include "Dog.hpp"
 
 
 int main()
 {
+	std::cout << "\n--- TEST from Subject ---" << std::endl;
 	const Animal*	meta = new Animal();
 	const Animal*	j = new Dog();
 	const Animal*	i = new Cat();

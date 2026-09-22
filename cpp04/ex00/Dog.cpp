@@ -1,0 +1,37 @@
+#include "Dog.hpp"
+#include <iostream>	//for std
+
+// Constructor
+Dog::Dog()
+	: Animal()
+{
+	_type = "Dog";
+	std::cout << "Dog: Constructor called" << std::endl;
+}
+
+// Copy constructor
+Dog::Dog(const Dog& other)
+{
+	*this = other;
+}
+
+// Copy assignment operator
+Dog& Dog::operator=(const Dog& other)
+{
+	if (this != &other)
+	{
+		Animal::operator=(other);
+	}
+	return *this;
+}
+
+// Destructor
+Dog::~Dog()
+{
+	std::cout << "Dog: Destructor called" << std::endl;
+}
+
+void	Dog::makeSound(void)
+{
+	std::cout << "wau wau" << std::endl;
+}

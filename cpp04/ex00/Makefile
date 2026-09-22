@@ -4,7 +4,8 @@ CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 
 SRC			=	main.cpp \
 				Animal.cpp \
-				Cat.cpp
+				Cat.cpp \
+				Dog.cpp
 
 OBJ			=	$(SRC:.cpp=.o)
 
