@@ -5,7 +5,7 @@
 Cat::Cat()
 	: Animal()
 {
-	_type = "Cat";
+	_type = "Cat";//orverwrite _type that has been initialized by Animal()
 	std::cout << "Cat: Constructor called" << std::endl;
 }
 
