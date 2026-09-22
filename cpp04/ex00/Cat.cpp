@@ -11,9 +11,10 @@ Cat::Cat()
 
 // Copy constructor
 Cat::Cat(const Cat& other)
-	: Animal(other), _type("Cat")
+	: Animal(other)
 {
 	*this = other;
+	_type = "Cat";
 }
 
 // Copy assignment operator

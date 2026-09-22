@@ -11,8 +11,10 @@ Dog::Dog()
 
 // Copy constructor
 Dog::Dog(const Dog& other)
+	: Animal(other)
 {
 	*this = other;
+	_type = "Dog";
 }
 
 // Copy assignment operator
@@ -31,7 +33,7 @@ Dog::~Dog()
 	std::cout << "Dog: Destructor called" << std::endl;
 }
 
-void	Dog::makeSound(void)
+void	Dog::makeSound(void) const
 {
 	std::cout << "wau wau" << std::endl;
 }
