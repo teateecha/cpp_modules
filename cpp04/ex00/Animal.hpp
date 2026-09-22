@@ -8,13 +8,13 @@ class Animal
 		Animal();
 		Animal(const Animal& other);
 		Animal& operator=(const Animal& other);
-		~Animal();
+		virtual	~Animal(); //why
 
 		std::string	getType(void) const;
+		virtual void	makeSound(void) const;
 		
 	protected:
 		std::string		_type;
-		virtual void	makeSound(void);
 };
 
 #endif
