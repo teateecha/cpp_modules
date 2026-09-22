@@ -34,6 +34,16 @@ int main()
 		delete meta;
 		delete i;
 	}
+	std::cout << "\n--- Copy TEST ---" << std::endl;
+	{
+		const Dog	j = Dog();
+		const Dog	i = Dog(j);
 
+		std::cout << "j " << j.getType() << " " << std::endl;
+		std::cout <<  "i " <<  i.getType() << " " << std::endl;
+
+		i.makeSound();//will output the dog sound!
+		j.makeSound();//will output the dog sound!
+	}
 	return 0;
 }

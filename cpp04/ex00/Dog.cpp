@@ -14,6 +14,7 @@ Dog::Dog(const Dog& other)
 	: Animal(other)
 {
 	*this = other;
+	std::cout << "Dog: Copy Constructor called" << std::endl;
 }
 
 // Copy assignment operator

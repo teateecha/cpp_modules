@@ -12,6 +12,7 @@ Animal::Animal()
 Animal::Animal(const Animal& other)
 {
 	*this = other;
+	std::cout << "Animal: Copy Constructor called" << std::endl;
 }
 
 // Copy assignment operator
