@@ -8,10 +8,10 @@ class WrongAnimal
 		WrongAnimal();
 		WrongAnimal(const WrongAnimal& other);
 		WrongAnimal& operator=(const WrongAnimal& other);
-		virtual	~WrongAnimal(); //why
+		~WrongAnimal(); //will always call BaseClass constructor
 
 		std::string	getType(void) const;
-		void	makeSound(void) const;
+		void	makeSound(void) const; //missing virtual keyword -> Compiler confusion of different functions
 		
 	protected:
 		std::string		_type;
