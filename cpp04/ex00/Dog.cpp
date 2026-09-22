@@ -5,7 +5,7 @@
 Dog::Dog()
 	: Animal()
 {
-	_type = "Dog";//orverwrite _type that has been initialized by Animal()
+	_type = "Dog";//orverwrite _type initialized by Animal()
 	std::cout << "Dog: Constructor called" << std::endl;
 }
 

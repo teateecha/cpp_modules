@@ -8,10 +8,12 @@ class WrongAnimal
 		WrongAnimal();
 		WrongAnimal(const WrongAnimal& other);
 		WrongAnimal& operator=(const WrongAnimal& other);
-		~WrongAnimal(); //will always call BaseClass constructor
+		//intentionally non-virtual.
+		~WrongAnimal();
 
 		std::string	getType(void) const;
-		void	makeSound(void) const; //missing virtual keyword -> Compiler confusion of different functions
+		//missing virtual keyword -> Animal* calls the WrongAnimal::makeSound()
+		void	makeSound(void) const;
 		
 	protected:
 		std::string		_type;
