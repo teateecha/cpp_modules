@@ -14,7 +14,6 @@ Cat::Cat(const Cat& other)
 	: Animal(other)
 {
 	*this = other;
-	_type = "Cat";
 }
 
 // Copy assignment operator

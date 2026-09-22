@@ -10,7 +10,7 @@ class Cat : public Animal
 		Cat& operator=(const Cat& other);
 		~Cat();
 
-		void	makeSound(void) const;
+		void	makeSound(void) const;//has to be public so that it can be called by Animal
 };
 
 #endif

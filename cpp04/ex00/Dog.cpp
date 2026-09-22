@@ -14,7 +14,6 @@ Dog::Dog(const Dog& other)
 	: Animal(other)
 {
 	*this = other;
-	_type = "Dog";
 }
 
 // Copy assignment operator

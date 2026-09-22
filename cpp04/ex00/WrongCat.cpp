@@ -14,7 +14,6 @@ WrongCat::WrongCat(const WrongCat& other)
 	: WrongAnimal(other)
 {
 	*this = other;
-	_type = "WrongCat";
 }
 
 // Copy assignment operator
