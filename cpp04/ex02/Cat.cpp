@@ -3,7 +3,7 @@
 
 // Constructor
 Cat::Cat()
-	: Animal()
+	: AAnimal()
 {
 	_type = "Cat";//orverwrite _type initialized by Animal()
 	_catBrain = new Brain();
@@ -12,7 +12,7 @@ Cat::Cat()
 
 // Copy constructor
 Cat::Cat(const Cat& other)
-	: Animal(other)
+	: AAnimal(other)
 {
 	_catBrain = new Brain(*other._catBrain);
 	std::cout << "Cat: Copy Constructor called" << std::endl;
@@ -23,8 +23,8 @@ Cat& Cat::operator=(const Cat& other)
 {
 	if (this != &other)
 	{
-		Animal::operator=(other);
-		_catBrain = other._catBrain;
+		AAnimal::operator=(other);
+		*_catBrain = *other._catBrain;
 	}
 	return *this;
 }
