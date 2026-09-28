@@ -6,6 +6,7 @@ Dog::Dog()
 	: Animal()
 {
 	_type = "Dog";//orverwrite _type initialized by Animal()
+	_dogBrain = new Brain();
 	std::cout << "Dog: Constructor called" << std::endl;
 }
 
@@ -22,7 +23,7 @@ Dog& Dog::operator=(const Dog& other)
 {
 	if (this != &other)
 	{
-		Animal::operator=(other);
+		Animal::operator=(other);//do i need a new Brain() here or will this call the constructors new Brain()?
 	}
 	return *this;
 }
@@ -30,6 +31,7 @@ Dog& Dog::operator=(const Dog& other)
 // Destructor
 Dog::~Dog()
 {
+	delete[] _dogBrain;
 	std::cout << "Dog: Destructor called" << std::endl;
 }
 

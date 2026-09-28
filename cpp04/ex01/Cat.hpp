@@ -1,6 +1,7 @@
 #ifndef CAT_HPP
 #define CAT_HPP
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Cat : public Animal
 {
@@ -11,6 +12,8 @@ class Cat : public Animal
 		~Cat();
 
 		void	makeSound(void) const;//has to be public so that it can be called by Animal
+	private:
+		Brain*	_catBrain;
 };
 
 #endif
