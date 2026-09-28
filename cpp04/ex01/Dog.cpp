@@ -23,7 +23,8 @@ Dog& Dog::operator=(const Dog& other)
 {
 	if (this != &other)
 	{
-		Animal::operator=(other);//do i need a new Brain() here or will this call the constructors new Brain()?
+		Animal::operator=(other);
+		_dogBrain = other._dogBrain;
 	}
 	return *this;
 }

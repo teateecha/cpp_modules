@@ -15,8 +15,6 @@ Cat::Cat(const Cat& other)
 	: Animal(other)
 {
 	*this = other;
-	for (int i = 0; i < 100; i++)
-		_ideas[i] = other._ideas[i];
 	std::cout << "Cat: Copy Constructor called" << std::endl;
 }
 
@@ -26,6 +24,7 @@ Cat& Cat::operator=(const Cat& other)
 	if (this != &other)
 	{
 		Animal::operator=(other);
+		_catBrain = other._catBrain;
 	}
 	return *this;
 }

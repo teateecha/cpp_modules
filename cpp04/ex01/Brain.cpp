@@ -14,6 +14,7 @@ Brain::Brain(const Brain& other)
 }
 
 // Copy assignment operator
+// for loop is necessary for deep copy
 Brain& Brain::operator=(const Brain& other)
 {
 	if (this != &other)
