@@ -8,7 +8,6 @@ int main()
 {
 	std::cout << "\n--- TEST from Subject ---" << std::endl;
 	{
-		const Animal*	meta = new Animal();
 		const Animal*	j = new Dog();
 		const Animal*	i = new Cat();
 
@@ -17,21 +16,19 @@ int main()
 
 		i->makeSound();//will output the cat sound!
 		j->makeSound();
-		meta->makeSound();
-		delete meta;
 		delete j;
 		delete i;
 	}
 	std::cout << "\n--- Wrong Animal TEST ---" << std::endl;
 	{
-		const WrongAnimal*	meta = new WrongAnimal();
+		// const WrongAnimal*	meta = new WrongAnimal();
 		const WrongAnimal*	i = new WrongCat();
 
 		std::cout << i->getType() << " " << std::endl;
 
 		i->makeSound();//will output the WrongAnimal sound!
-		meta->makeSound();
-		delete meta;
+		// meta->makeSound();
+		// delete meta;
 		delete i;
 	}
 	std::cout << "\n--- Copy TEST ---" << std::endl;
