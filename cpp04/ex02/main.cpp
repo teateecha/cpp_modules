@@ -6,29 +6,16 @@
 
 int main()
 {
-	std::cout << "\n--- TEST from Subject ---" << std::endl;
-	{
-		const Animal*	j = new Dog();
-		const Animal*	i = new Cat();
-
-		std::cout << j->getType() << " " << std::endl;
-		std::cout << i->getType() << " " << std::endl;
-
-		i->makeSound();//will output the cat sound!
-		j->makeSound();
-		delete j;
-		delete i;
-	}
 	std::cout << "\n--- Wrong Animal TEST ---" << std::endl;
 	{
-		// const WrongAnimal*	meta = new WrongAnimal();
+		const WrongAnimal*	meta = new WrongAnimal();
 		const WrongAnimal*	i = new WrongCat();
 
 		std::cout << i->getType() << " " << std::endl;
 
 		i->makeSound();//will output the WrongAnimal sound!
-		// meta->makeSound();
-		// delete meta;
+		meta->makeSound();
+		delete meta;
 		delete i;
 	}
 	std::cout << "\n--- Copy TEST ---" << std::endl;
@@ -45,9 +32,9 @@ int main()
 			<< i.getBrain() << " Idea\t"<<  i.getBrain()->getIdeaAddress(0) << std::endl;
 		j.makeSound();//will output the dog sound!
 	}
-		std::cout << "\n--- Animal Array TEST ---" << std::endl;
+		std::cout << "\n--- AAnimal Array TEST ---" << std::endl;
 	{
-		Animal*	pets[20];
+		AAnimal*	pets[20];
 
 		for (int i = 0; i < 10; i++)
 			pets[i] = new Dog();
