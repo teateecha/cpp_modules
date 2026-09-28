@@ -2,7 +2,7 @@
 #define AANIMAL_HPP
 # include <string>//for std::string
 
-// abstract Class cannot be instenciated
+// Abstract class: cannot be instantiated
 class AAnimal
 {
 	public:
@@ -13,8 +13,8 @@ class AAnimal
 		virtual	~AAnimal();
 
 		std::string	getType(void) const;
-		//enable runtime polymorphism: AAnimal* calles the derived makeSound()
-		virtual void	makeSound(void) const = 0; // this makes the method pure and the class abstract.
+		//enables runtime polymorphism: AAnimal* calles the derived makeSound()
+		virtual void	makeSound(void) const = 0; // Pure virtual: makes AAnimal abstract.
 		
 	protected:
 		std::string		_type;
