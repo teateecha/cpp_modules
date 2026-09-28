@@ -12,6 +12,7 @@ class Dog : public Animal
 		~Dog();
 
 		void	makeSound(void) const;//has to be public so that it can be called by Animal
+		Brain*	getBrain(void) const;
 	private:
 		Brain*	_dogBrain;
 
