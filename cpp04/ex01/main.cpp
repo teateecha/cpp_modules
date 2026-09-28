@@ -45,27 +45,14 @@ int main()
 		i.makeSound();//will output the dog sound!
 		j.makeSound();//will output the dog sound!
 	}
-		std::cout << "\n--- Brain TEST ---" << std::endl;
-	{
-		const Dog	j = Dog();
-
-		std::cout << "j " << j.getType() << " " << std::endl;
-		j._dogBrain._ideas[0] = "I am a Dog";
-		j._dogBrain._ideas[1] = "I am an Animal";
-		j._dogBrain._ideas[2] = "I am hungry";
-		j.makeSound();//will output the dog sound!
-		for (size_t i = 0; i < 3; i++)
-			std::cout << j._dogBrain._ideas[i] << std::endl;
-		j.makeSound();
-	}
 		std::cout << "\n--- Animal Array TEST ---" << std::endl;
 	{
-		Animal	pets[20];
+		Animal*	pets[20];
 
 		for (int i = 0; i < 10; i++)
-			pets[i] = Dog();
-		for (int i = 0; i < 20; i++)
-			pets[i] = Cat();
+			pets[i] = new Dog();
+		for (int i = 10; i < 20; i++)
+			pets[i] = new Cat();
 		for (int i = 0; i < 20; i++)
 			std::cout << i << "\t" << pets[i].getType() << std::endl;
 		for (int i = 0; i < 20; i++)
