@@ -42,6 +42,7 @@ void	Cat::makeSound(void) const
 }
 
 
+
 //getter
 Brain*	Cat::getBrain(void) const
 {
