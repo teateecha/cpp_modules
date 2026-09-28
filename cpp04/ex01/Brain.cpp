@@ -32,3 +32,8 @@ Brain::~Brain()
 	std::cout << "Brain: Destructor called" << std::endl;
 }
 
+
+const std::string*	Brain::getIdeaAddress(int i) const
+{
+	return (&_ideas[i]);
+}

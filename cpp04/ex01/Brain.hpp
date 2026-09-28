@@ -11,6 +11,7 @@ class Brain
 		Brain& operator=(const Brain& other);
 		~Brain();
 
+		const std::string*	getIdeaAddress(int i) const;
 	private:
 		std::string	_ideas[100];
 };

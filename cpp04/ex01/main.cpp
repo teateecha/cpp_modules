@@ -39,10 +39,13 @@ int main()
 		const Dog	j = Dog();
 		const Dog	i = Dog(j);
 
-		std::cout << "j " << j.getType() << " " << std::endl;
-		std::cout <<  "i " <<  i.getType() << " " << std::endl;
-
+		std::cout <<"--- original j ---" << std::endl;
+		std::cout << "j " << j.getType() << " " << "\t" << "address check Brain: "
+			<< j.getBrain() << " Idea\t"<<  j.getBrain()->getIdeaAddress(0) << std::endl;
 		i.makeSound();//will output the dog sound!
+		std::cout << " --- copy i ---" << std::endl;
+		std::cout <<  "i " <<  i.getType() << " " << "\t" << "Brain  i at adress " 
+			<< i.getBrain() << " Idea\t"<<  i.getBrain()->getIdeaAddress(0) << std::endl;
 		j.makeSound();//will output the dog sound!
 	}
 		std::cout << "\n--- Animal Array TEST ---" << std::endl;
@@ -54,7 +57,7 @@ int main()
 		for (int i = 10; i < 20; i++)
 			pets[i] = new Cat();
 		for (int i = 0; i < 20; i++)
-			std::cout << i << "\t" << pets[i].getType() << std::endl;
+			std::cout << i << "\t" << pets[i]->getType() << std::endl;
 		for (int i = 0; i < 20; i++)
 			delete pets[i];
 	}
