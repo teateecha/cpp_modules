@@ -11,6 +11,7 @@ Brain::Brain()
 Brain::Brain(const Brain& other)
 {
 	*this = other;
+	std::cout << "Brain: Copy Constructor called" << std::endl;
 }
 
 // Copy assignment operator

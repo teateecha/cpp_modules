@@ -14,7 +14,7 @@ Dog::Dog()
 Dog::Dog(const Dog& other)
 	: Animal(other)
 {
-	*this = other;
+	_dogBrain = new Brain(*other._dogBrain);
 	std::cout << "Dog: Copy Constructor called" << std::endl;
 }
 
@@ -32,7 +32,7 @@ Dog& Dog::operator=(const Dog& other)
 // Destructor
 Dog::~Dog()
 {
-	delete[] _dogBrain;
+	delete _dogBrain;
 	std::cout << "Dog: Destructor called" << std::endl;
 }
 

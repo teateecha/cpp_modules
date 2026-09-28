@@ -14,7 +14,7 @@ Cat::Cat()
 Cat::Cat(const Cat& other)
 	: Animal(other)
 {
-	*this = other;
+	_catBrain = new Brain(*other._catBrain);
 	std::cout << "Cat: Copy Constructor called" << std::endl;
 }
 
@@ -32,7 +32,7 @@ Cat& Cat::operator=(const Cat& other)
 // Destructor
 Cat::~Cat()
 {
-	delte[] _catBrain;
+	delete _catBrain;
 	std::cout << "Cat: Destructor called" << std::endl;
 }
 
