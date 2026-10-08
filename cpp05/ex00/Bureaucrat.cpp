@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include <exception>
 #include <iostream>
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw()
@@ -13,6 +14,7 @@ const char*	Bureaucrat::GradeTooHighException::what() const throw()
 
 // Constructor
 Bureaucrat::Bureaucrat()
+	: _name("default"), _grade(150)
 {
 	std::cout << "Bureaucrat: Default Constructor called" << std::endl;
 }
@@ -67,4 +69,34 @@ const std::string	Bureaucrat::getName(void) const
 unsigned int	Bureaucrat::getGrade(void) const
 {
 	return (_grade);
+}
+
+void	Bureaucrat::increment(void)
+{
+	try
+	{
+		if (_grade < 1)
+			throw Bureaucrat::GradeTooHighException();
+		else
+			_grade -= 1;
+	}
+	catch (std::exception & e)
+	{
+			std::cerr << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::decrement(void)
+{
+	try
+	{
+		if (_grade > 150)
+			throw Bureaucrat::GradeTooLowException();
+		else
+			_grade += 1;
+	}
+	catch (std::exception & e)
+	{
+			std::cerr << e.what() << std::endl;
+	}
 }

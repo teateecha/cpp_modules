@@ -22,7 +22,9 @@ class Bureaucrat
 			public:
 				virtual const char* what() const throw();//this functions does not throw
 		};
-
+		void	increment(void);
+		void	decrement(void);
+		
 	private:
 		Bureaucrat& operator=(const Bureaucrat& other);//should not be used with const
 		Bureaucrat();//grade is mandatory for instatuation
