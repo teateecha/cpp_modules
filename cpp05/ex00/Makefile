@@ -24,12 +24,12 @@ fclean: clean
 re: fclean all
 
 test: re
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "so ein schoener Name" "22"
-	./$(NAME) "TooLow" "151"
-	./$(NAME) "TooHigh" "0"
-	./$(NAME) "SuperBoss" "1"
-	./$(NAME) "CoffeMaker" "150"
-	./$(NAME) "God" "-3"
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "Guenter" "22"
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "TooLow" "151"
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "TooHigh" "0"
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "SuperBoss" "1"
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "CoffeMaker" "150"
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "God" "-3"
 
 .PHONY: all clean fclean re
 
