@@ -1,5 +1,4 @@
 #include "Bureaucrat.hpp"
-#include <exception>
 #include <iostream>
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw()

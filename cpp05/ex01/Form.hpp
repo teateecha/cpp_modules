@@ -2,6 +2,7 @@
 # define FORM_HPP
 
 # include <string>
+# include "Bureaucrat.hpp"
 
 class Form
 {
@@ -10,19 +11,19 @@ class Form
 		const unsigned int	_gradeToSign;
 		const unsigned int	_gradeToExec;
 		bool				_sig;
+		Form();//with const members default constructing is unwanted
+		Form& operator=(const Form& other);
 		
 	
 	public:
-		Form();
-		Form(std::string name);
+		Form(std::string name, unsigned int gradeToSign, unsigned int gradeToExec);
 		Form(const Form& other);
-		Form& operator=(const Form& other);
 		~Form();
 		const std::string	getName(void) const;
-		const unsigned int	getGradeToSign(void);
-		const unsigned int	getGradeToExec(void);
-		bool				getSig(void);
-		bool				setSig(bool sig);
+		const unsigned int	getGradeToSign(void) const;
+		const unsigned int	getGradeToExec(void) const;
+		bool				getSig(void) const;
+		void				beSigned(Bureaucrat buro);
 		class GradeTooHighException : public std::exception
 		{
 			public:

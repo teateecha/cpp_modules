@@ -1,7 +1,7 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include <exception>
+# include <exception>
 # include <string>
 
 # define LOWEST_LEVEL 150
@@ -27,6 +27,7 @@ class Bureaucrat
 		};
 		void	increment(void);
 		void	decrement(void);
+		void	signForm(Form form);//TODO problem with recursive inclusion ... i cannot inlcude form.hpp
 		
 	private:
 		Bureaucrat& operator=(const Bureaucrat& other);//should not be used with const
