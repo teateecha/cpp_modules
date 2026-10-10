@@ -23,11 +23,13 @@ fclean: clean
 
 re: fclean all
 
-test:
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "so ein schoener Name" "-3"
-	./$(NAME) "so ein schoener Name" "22"
-	./$(NAME) "so ein schoener Name" "151"
-	./$(NAME) "so ein schoener Name" "0"
+test: re
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "so ein schoener Name" "22"
+	./$(NAME) "TooLow" "151"
+	./$(NAME) "TooHigh" "0"
+	./$(NAME) "SuperBoss" "1"
+	./$(NAME) "CoffeMaker" "150"
+	./$(NAME) "God" "-3"
 
 .PHONY: all clean fclean re
 

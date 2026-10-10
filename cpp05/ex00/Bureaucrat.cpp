@@ -14,7 +14,7 @@ const char*	Bureaucrat::GradeTooHighException::what() const throw()
 
 // Constructor
 Bureaucrat::Bureaucrat()
-	: _name("default"), _grade(150)
+	: _name("default"), _grade(LOWEST_LEVEL)
 {
 	std::cout << "Bureaucrat: Default Constructor called" << std::endl;
 }
@@ -22,22 +22,15 @@ Bureaucrat::Bureaucrat()
 Bureaucrat::Bureaucrat(std::string name, int grade)
 	: _name(name)
 {
-	try
+	if (grade < HIGHEST_LEVEL)
+		throw Bureaucrat::GradeTooHighException();
+	else if (grade > LOWEST_LEVEL)
+		throw Bureaucrat::GradeTooLowException();
+	else
 	{
-		if (grade < 1)
-			throw Bureaucrat::GradeTooHighException();
-		else if (grade > 150)
-			throw Bureaucrat::GradeTooLowException();
-		else
-		{
-			_grade = static_cast<unsigned int>(grade);
-			std::cout << "Bureaucrat " << _name << ": Constructor called" << std::endl;
-		};
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+		_grade = static_cast<unsigned int>(grade);
+		std::cout << "Bureaucrat " << _name << ": Constructor called" << std::endl;
+	};
 }
 
 // Copy constructor
@@ -54,6 +47,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 	<< " because this is a class with const memebers .. .they are not overridable." << std::endl;
 	return (*this);
 }
+
 
 // Destructor
 Bureaucrat::~Bureaucrat()
@@ -73,30 +67,23 @@ unsigned int	Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::increment(void)
 {
-	try
-	{
-		if (_grade < 1)
-			throw Bureaucrat::GradeTooHighException();
-		else
-			_grade -= 1;
-	}
-	catch (std::exception & e)
-	{
-			std::cerr << e.what() << std::endl;
-	}
+	if (_grade <= HIGHEST_LEVEL)
+		throw (Bureaucrat::GradeTooHighException());
+	else
+		_grade -= 1;
 }
 
 void	Bureaucrat::decrement(void)
 {
-	try
-	{
-		if (_grade > 150)
-			throw Bureaucrat::GradeTooLowException();
-		else
-			_grade += 1;
-	}
-	catch (std::exception & e)
-	{
-			std::cerr << e.what() << std::endl;
-	}
+	if (_grade >= LOWEST_LEVEL)
+		throw (Bureaucrat::GradeTooLowException());
+	else
+		_grade += 1;
+}
+
+//overload of insertion operator
+std::ostream&	operator<<(std::ostream& o, Bureaucrat const& buro)
+{
+	o << buro.getName() << ", bureaucrat grade " << buro.getGrade() <<  ".";
+	return (o);
 }

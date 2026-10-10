@@ -4,6 +4,9 @@
 #include <exception>
 # include <string>
 
+# define LOWEST_LEVEL 150
+# define HIGHEST_LEVEL 1
+
 class Bureaucrat
 {
 	public:
@@ -32,4 +35,5 @@ class Bureaucrat
 		unsigned int	_grade;
 };
 
+std::ostream&	operator<<(std::ostream& o, Bureaucrat const& buro);
 #endif
