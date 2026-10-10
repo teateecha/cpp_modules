@@ -31,5 +31,5 @@ test: re
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "CoffeMaker" "150"
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "God" "-3"
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test
 
