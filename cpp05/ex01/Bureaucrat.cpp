@@ -3,12 +3,12 @@
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("This grade is too low.");
+	return ("Burocrat: grade is too low");
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("This grade is too high.");
+	return ("Burocrat: grade is too high");
 }
 
 // Constructor
@@ -85,4 +85,17 @@ std::ostream&	operator<<(std::ostream& o, Bureaucrat const& buro)
 {
 	o << buro.getName() << ", bureaucrat grade " << buro.getGrade() <<  ".";
 	return (o);
+}
+
+void	Bureaucrat::signForm(Form& form)
+{
+	try
+	{
+		form.beSigned((_grade));
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << _name << " couldn’t sign " << form.getName()
+			<< " because "<< e.what() << "." << std::endl;
+	}
 }

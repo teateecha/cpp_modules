@@ -5,16 +5,16 @@
 
 const char*	Form::GradeTooLowException::what() const throw()
 {
-	return ("This grade is too low.");
+	return ("Form: this grade is too low.");
 }
 
 const char*	Form::GradeTooHighException::what() const throw()
 {
-	return ("This grade is too high.");
+	return ("Form: his grade is too high.");
 }
 
 
-// Constructor
+// Constructor - private to prevent the use
 Form::Form()
 	: _name("default"), _gradeToSign(LOWEST_LEVEL), _gradeToExec(LOWEST_LEVEL), _sig(false)
 {
@@ -33,12 +33,10 @@ Form::Form(std::string name, unsigned int gradeToSign, unsigned int gradeToExec)
 
 // Copy constructor
 Form::Form(const Form& other)
-	: _name(other._name), _gradeToSign(other._gradeToSign), _gradeToExec(other._gradeToExec), _sig(other._sig)
-{
-	std::cout << "Form " << _name << ": copy-constructed." << std::endl;
+	: _name(other._name), _gradeToSign(other._gradeToSign), _gradeToExec(other._gradeToExec), _sig(other._sig) { std::cout << "Form " << _name << ": copy-constructed." << std::endl;
 }
 
-// Copy assignment operator
+// Copy assignment operator - this function is private to prevent the use
 Form& Form::operator=(const Form& other)
 {
 	std::cerr << "you cannot copy from " << other._name
@@ -67,12 +65,17 @@ unsigned int	Form::getGradeToExec(void) const
 	return (_gradeToExec);
 }
 
+bool	Form::getSig(void) const
+{
+	return (_sig);
+}
+
 std::ostream&	operator<<(std::ostream& o, Form const& form)
 {
 	o << form.getName()
-		<< ",\nform grade required to sign:\t" << form.getGradeToSign()
-		<< "\ngrade required to execute:\t" << form.getGradeToExec()
-		<< std::endl;
+		<< ", form grade required to sign: " << form.getGradeToSign()
+		<< "\tform grade required to execute: " << form.getGradeToExec()
+		<< "\t sign status: " << form.getSig();
 	return (o);
 }
 

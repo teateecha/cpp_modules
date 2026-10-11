@@ -4,40 +4,48 @@
 #include <iostream>
 #include <stdlib.h> //for atoi because stoi is c++11
 
+void	overflowCheck(char *test, int grade)
+{
+	if (grade == -1 && test[0] != '-' && test[1] != '1')
+			throw (std::overflow_error("Int overflow"));
+}
 /*instatiate a Burocrat with a arg1: name and arg2: grade*/
 int main(int argc, char **argv)
 {
-    if (argc != 3)
+    if (argc != 6)
     {
-        std::cerr << "wrong number of arguments." << std::endl;
+        std::cerr << "usage: arg1: burocrat name, arg2: burocrat grade, arg3: form name, \
+			arg4 form grade required to sign, arg5 form grade required to execute" << std::endl;
         return (1);
     }
     std::cout << "\n --- TEST: ---"  << std::endl;
     std::string name = std::string(argv[1]);
     int grade = atoi(argv[2]);
+	std::string formname = std::string(argv[3]);
+	int	gradeToSign = atoi(argv[4]);
+	int gradeToExecute = atoi(argv[5]);
 	try
 	{
-		if (grade == -1 && argv[2][0] != '-' && argv[2][1] != '1')
-			throw (std::overflow_error("Int overflow"));
-		else
-		{
-			Bureaucrat heily = Bureaucrat(name, grade);
-			std::cout << "output:\t\t";
-			std::cout << heily <<std::endl;
-			std::cout << "now incrementing once:\t" << std::endl;
-			heily.increment();
-			std::cout << "we are still in the try block: output:\t\t";
-			std::cout  << heily << std::endl;
-			std::cout << "now decrementing twice:\t" << std::endl;
-			heily.decrement();
-			heily.decrement();
-			std::cout << "we are still in the try block: output:\t\t";
-			std::cout  << heily << std::endl;
-		}
+		overflowCheck(argv[2], grade);
+		overflowCheck(argv[4], gradeToSign);
+		overflowCheck(argv[5], gradeToExecute);
+
+		Bureaucrat heily = Bureaucrat(name, grade);
+		Form formH = Form(formname , gradeToSign, gradeToExecute);
+		std::cout << "output:" << std::endl;
+		std::cout << heily << std::endl;
+		std::cout << formH << std::endl;
+	 	std::cout << " --- try signing: --- " << std::endl;
+		heily.signForm(formH);
+		std::cout << formH << std::endl;
+		std::cout << "--- incrementing once and then try signing again: ---" << std::endl;
+		heily.increment();
+		heily.signForm(formH);
+		std::cout << formH << std::endl;
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << "we are in the catch block" << std::endl;
+		std::cout << "--- hello from main catch block ---" << std::endl;
 		std::cerr << e.what() << std::endl;
 	}
 	std::cout << " ---- END ---\n\n" <<std::endl;

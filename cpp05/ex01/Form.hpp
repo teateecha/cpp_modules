@@ -9,7 +9,7 @@ class Form
 		Form(std::string name, unsigned int gradeToSign, unsigned int gradeToExec);
 		Form(const Form& other);
 		~Form();
-		std::string	getName(void) const;
+		std::string		getName(void) const;
 		unsigned int	getGradeToSign(void) const;
 		unsigned int	getGradeToExec(void) const;
 		bool				getSig(void) const;
@@ -31,7 +31,7 @@ class Form
 		const unsigned int	_gradeToExec;
 		bool				_sig;
 		Form();//with const members default constructing is unwanted
-		Form& operator=(const Form& other);
+		Form& operator=(const Form& other);//same for copying
 };
 
 std::ostream&	operator<<(std::ostream& o, Form const& form);

@@ -28,13 +28,13 @@ class Bureaucrat
 		};
 		void	increment(void);
 		void	decrement(void);
-		void	signForm(Form form);//TODO problem with recursive inclusion ... i cannot inlcude form.hpp
+		void	signForm(Form& form);
 		
 	private:
 		Bureaucrat& operator=(const Bureaucrat& other);//should not be used with const
 		Bureaucrat();//grade is mandatory for instatuation
 		const std::string	_name;
-		unsigned int	_grade;
+		unsigned int		_grade;
 };
 
 std::ostream&	operator<<(std::ostream& o, Bureaucrat const& buro);
