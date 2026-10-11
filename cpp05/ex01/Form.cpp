@@ -16,7 +16,7 @@ const char*	Form::GradeTooHighException::what() const throw()
 
 // Constructor
 Form::Form()
-	: _name("default"), _gradeToSign(150), _gradeToExec(150), _sig(false)
+	: _name("default"), _gradeToSign(LOWEST_LEVEL), _gradeToExec(LOWEST_LEVEL), _sig(false)
 {
 	std::cout << "Form: Default Constructor called" << std::endl;
 }
@@ -41,7 +41,7 @@ Form::Form(const Form& other)
 // Copy assignment operator
 Form& Form::operator=(const Form& other)
 {
-	std::cout << "you cannot copy from " << other._name
+	std::cerr << "you cannot copy from " << other._name
 	<< " because this is a class with const memebers .. .they are not overridable." << std::endl;
 	return (*this);
 }
@@ -73,6 +73,7 @@ std::ostream&	operator<<(std::ostream& o, Form const& form)
 		<< ",\nform grade required to sign:\t" << form.getGradeToSign()
 		<< "\ngrade required to execute:\t" << form.getGradeToExec()
 		<< std::endl;
+	return (o);
 }
 
 void	Form::beSigned(unsigned int grade)
