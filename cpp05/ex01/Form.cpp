@@ -2,6 +2,7 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
+
 const char*	Form::GradeTooLowException::what() const throw()
 {
 	return ("This grade is too low.");
@@ -20,19 +21,19 @@ Form::Form()
 	std::cout << "Form: Default Constructor called" << std::endl;
 }
 
-Form(std::string name, unsigned int gradeToSign, unsigned int gradeToExec);
+Form::Form(std::string name, unsigned int gradeToSign, unsigned int gradeToExec)
 	: _name(name), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec), _sig(false)
 {
 	if (_gradeToSign > LOWEST_LEVEL || _gradeToExec > LOWEST_LEVEL)
-		throw (Form::GradeTooLowException);
+		throw (Form::GradeTooLowException());
 	else if (_gradeToSign < HIGHEST_LEVEL || _gradeToExec < HIGHEST_LEVEL)
-		throw (Form::GradeTooHighException);
+		throw (Form::GradeTooHighException());
 	std::cout << "Form " << _name << ": Constructor called" << std::endl;
 }
 
 // Copy constructor
 Form::Form(const Form& other)
-	: _name(other._name), _gradeToSign(other._gradeToSign), gradeToExec(other._gradeToExec), _sig(other._sig)
+	: _name(other._name), _gradeToSign(other._gradeToSign), _gradeToExec(other._gradeToExec), _sig(other._sig)
 {
 	std::cout << "Form " << _name << ": copy-constructed." << std::endl;
 }
@@ -51,17 +52,17 @@ Form::~Form()
 	std::cout << "Form " << _name << ": Destructor called" << std::endl;
 }
 
-const std::string	Form::getName(void) const
+std::string	Form::getName(void) const
 {
 	return(_name);
 }
 
-const unsigned int	Form::getGradeToSign(void) const
+unsigned int	Form::getGradeToSign(void) const
 {
 	return (_gradeToSign);
 }
 
-const unsigned int	Form::getGradeToExec(void) const
+unsigned int	Form::getGradeToExec(void) const
 {
 	return (_gradeToExec);
 }
@@ -74,9 +75,9 @@ std::ostream&	operator<<(std::ostream& o, Form const& form)
 		<< std::endl;
 }
 
-void	Form::beSigned(Bureaucrat buro)
+void	Form::beSigned(unsigned int grade)
 {
-	if (buro.getGrade() > _gradeToSign)
-		throw (Form::GradeTooLowException);
+	if (grade > _gradeToSign)
+		throw (Form::GradeTooLowException());
 	_sig = true;
 }
