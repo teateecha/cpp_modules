@@ -12,8 +12,6 @@ class Bureaucrat
 {
 	public:
 		Bureaucrat(std::string name, int grade);
-		Bureaucrat& operator=(const Bureaucrat& other);//should not be used with const
-		Bureaucrat();//grade is mandatory for instatuation
 		Bureaucrat(const Bureaucrat& other);
 		~Bureaucrat();
 		const std::string	getName(void) const;
@@ -32,6 +30,8 @@ class Bureaucrat
 		void	decrement(void);
 		
 	private:
+		Bureaucrat();//grade is mandatory for instatuation
+		Bureaucrat& operator=(const Bureaucrat& other);//should not be used with const
 		const std::string	_name;
 		unsigned int	_grade;
 };
