@@ -39,8 +39,8 @@ Form::Form(const Form& other)
 // Copy assignment operator - this function is private to prevent the use
 Form& Form::operator=(const Form& other)
 {
-	std::cerr << "you cannot copy from " << other._name
-	<< " because this is a class with const memebers .. .they are not overridable." << std::endl;
+	if (this != &other)
+		_sig = other._sig;
 	return (*this);
 }
 
@@ -79,9 +79,9 @@ std::ostream&	operator<<(std::ostream& o, Form const& form)
 	return (o);
 }
 
-void	Form::beSigned(unsigned int grade)
+void	Form::beSigned(Bureaucrat buro)
 {
-	if (grade > _gradeToSign)
+	if (buro.getGrade() > _gradeToSign)
 		throw (Form::GradeTooLowException());
 	_sig = true;
 }

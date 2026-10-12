@@ -4,10 +4,11 @@
 # include <exception>
 # include <string>
 # include <ostream>
-# include "Form.hpp"
 
 # define LOWEST_LEVEL 150
 # define HIGHEST_LEVEL 1
+
+class Form;
 
 class Bureaucrat
 {

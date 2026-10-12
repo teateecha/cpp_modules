@@ -2,6 +2,10 @@
 # define FORM_HPP
 
 # include <string>
+# include <ostream>
+# include <exception>
+
+class Bureaucrat;
 
 class Form
 {
@@ -13,7 +17,7 @@ class Form
 		unsigned int	getGradeToSign(void) const;
 		unsigned int	getGradeToExec(void) const;
 		bool				getSig(void) const;
-		void				beSigned(unsigned int grade);
+		void				beSigned(Bureaucrat buro);
 		class GradeTooHighException : public std::exception
 		{
 			public:
