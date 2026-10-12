@@ -3,6 +3,7 @@
 
 # include <exception>
 # include <string>
+# include <ostream>
 # include "Form.hpp"
 
 # define LOWEST_LEVEL 150

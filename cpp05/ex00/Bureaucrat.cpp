@@ -43,8 +43,10 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other)
 // Copy assignment operator
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 {
-	std::cout << "you cannot copy from " << other._name
-	<< " because this is a class with const memebers .. .they are not overridable." << std::endl;
+	if (this != &other)
+	{
+		_grade = other._grade;
+	}
 	return (*this);
 }
 

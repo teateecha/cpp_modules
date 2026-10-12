@@ -1,14 +1,8 @@
 #include "Bureaucrat.hpp"
 #include <exception>
-#include <stdexcept>//for overflow_error
 #include <iostream>
 #include <stdlib.h> //for atoi because stoi is c++11
 
-void	overflowCheck(char *test, int grade)
-{
-	if (grade == -1 && test[0] != '-' && test[1] != '1')
-			throw (std::overflow_error("Int overflow"));
-}
 /*instatiate a Burocrat with a arg1: name and arg2: grade*/
 int main(int argc, char **argv)
 {
@@ -26,10 +20,6 @@ int main(int argc, char **argv)
 	int gradeToExecute = atoi(argv[5]);
 	try
 	{
-		overflowCheck(argv[2], grade);
-		overflowCheck(argv[4], gradeToSign);
-		overflowCheck(argv[5], gradeToExecute);
-
 		Bureaucrat heily = Bureaucrat(name, grade);
 		Form formH = Form(formname , gradeToSign, gradeToExecute);
 		std::cout << "output:" << std::endl;
@@ -45,7 +35,7 @@ int main(int argc, char **argv)
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << "--- hello from main catch block ---" << std::endl;
+		std::cout << "--- hello from main catch block" << std::endl;
 		std::cerr << e.what() << std::endl;
 	}
 	std::cout << " ---- END ---\n\n" <<std::endl;

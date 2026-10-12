@@ -1,6 +1,5 @@
 #include "Bureaucrat.hpp"
 #include <exception>
-#include <stdexcept>//for overflow_error
 #include <iostream>
 #include <stdlib.h> //for atoi because stoi is c++11
 
@@ -17,23 +16,18 @@ int main(int argc, char **argv)
     int grade = atoi(argv[2]);
 	try
 	{
-		if (grade == -1 && argv[2][0] != '-' && argv[2][1] != '1')
-			throw (std::overflow_error("Int overflow"));
-		else
-		{
-			Bureaucrat heily = Bureaucrat(name, grade);
-			std::cout << "output:\t\t";
-			std::cout << heily <<std::endl;
-			std::cout << "now incrementing once:\t" << std::endl;
-			heily.increment();
-			std::cout << "we are still in the try block: output:\t\t";
-			std::cout  << heily << std::endl;
-			std::cout << "now decrementing twice:\t" << std::endl;
-			heily.decrement();
-			heily.decrement();
-			std::cout << "we are still in the try block: output:\t\t";
-			std::cout  << heily << std::endl;
-		}
+		Bureaucrat heily = Bureaucrat(name, grade);
+		std::cout << "output:\t\t";
+		std::cout << heily <<std::endl;
+		std::cout << "now incrementing once:\t" << std::endl;
+		heily.increment();
+		std::cout << "we are still in the try block: output:\t\t";
+		std::cout  << heily << std::endl;
+		std::cout << "now decrementing twice:\t" << std::endl;
+		heily.decrement();
+		heily.decrement();
+		std::cout << "we are still in the try block: output:\t\t";
+		std::cout  << heily << std::endl;
 	}
 	catch (const std::exception& e)
 	{

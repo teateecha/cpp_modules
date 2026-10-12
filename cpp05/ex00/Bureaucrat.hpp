@@ -1,7 +1,8 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include <exception>
+# include <exception>
+# include <ostream>
 # include <string>
 
 # define LOWEST_LEVEL 150
@@ -11,6 +12,8 @@ class Bureaucrat
 {
 	public:
 		Bureaucrat(std::string name, int grade);
+		Bureaucrat& operator=(const Bureaucrat& other);//should not be used with const
+		Bureaucrat();//grade is mandatory for instatuation
 		Bureaucrat(const Bureaucrat& other);
 		~Bureaucrat();
 		const std::string	getName(void) const;
@@ -29,8 +32,6 @@ class Bureaucrat
 		void	decrement(void);
 		
 	private:
-		Bureaucrat& operator=(const Bureaucrat& other);//should not be used with const
-		Bureaucrat();//grade is mandatory for instatuation
 		const std::string	_name;
 		unsigned int	_grade;
 };
