@@ -1,10 +1,13 @@
-NAME		=	claptrap
+NAME		=	animal
 CC			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 
 SRC			=	main.cpp \
 				Animal.cpp \
-				Cat.cpp
+				Cat.cpp \
+				Dog.cpp \
+				WrongAnimal.cpp \
+				WrongCat.cpp
 
 OBJ			=	$(SRC:.cpp=.o)
 
@@ -24,8 +27,8 @@ fclean: clean
 
 re: fclean all
 
-test:
+test: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test
 

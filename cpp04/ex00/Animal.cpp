@@ -3,7 +3,7 @@
 
 // Constructor
 Animal::Animal()
-	: type("Animal")
+	: _type("Animal")
 {
 	std::cout << "Animal: Constructor called" << std::endl;
 }
@@ -12,6 +12,7 @@ Animal::Animal()
 Animal::Animal(const Animal& other)
 {
 	*this = other;
+	std::cout << "Animal: Copy Constructor called" << std::endl;
 }
 
 // Copy assignment operator
@@ -19,7 +20,7 @@ Animal& Animal::operator=(const Animal& other)
 {
 	if (this != &other)
 	{
-		type = other.type;
+		_type = other._type;
 	}
 	return *this;
 }
@@ -30,7 +31,12 @@ Animal::~Animal()
 	std::cout << "Animal: Destructor called" << std::endl;
 }
 
-void	Animal::makeSound(void)
+void	Animal::makeSound(void) const
 {
 	std::cout << "Animal speaking here." << std::endl;
+}
+
+std::string	Animal::getType(void) const
+{
+	return (_type);
 }

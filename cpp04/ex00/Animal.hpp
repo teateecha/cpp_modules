@@ -8,11 +8,15 @@ class Animal
 		Animal();
 		Animal(const Animal& other);
 		Animal& operator=(const Animal& other);
-		~Animal();
+		// virtual so deleting through Animal* calls the derived Destructor first
+		virtual	~Animal();
+
+		std::string	getType(void) const;
+		//enable runtime polymorphism: Animal* calles the derived makeSound()
+		virtual void	makeSound(void) const;
 		
-		virtual void	makeSound(void);
 	protected:
-		std::string		type;
+		std::string		_type;
 };
 
 #endif
