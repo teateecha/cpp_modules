@@ -12,12 +12,12 @@ class AForm
 	public:
 		AForm(std::string name, unsigned int gradeToSign, unsigned int gradeToExec);
 		AForm(const AForm& other);
-		virutal ~AForm();
+		virtual ~AForm();
 		std::string		getName(void) const;
 		unsigned int	getGradeToSign(void) const;
 		unsigned int	getGradeToExec(void) const;
 		bool				getSig(void) const;
-		void				beSigned(Bureaucrat& buro);
+		virtual void	beSigned(Bureaucrat& buro) = 0;
 		class GradeTooHighException : public std::exception
 		{
 			public:

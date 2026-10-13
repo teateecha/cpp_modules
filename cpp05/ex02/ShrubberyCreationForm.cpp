@@ -1,23 +1,26 @@
 #include "ShrubberyCreationForm.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
 // Constructor
 ShrubberyCreationForm::ShrubberyCreationForm()
+	: AForm("ShrubberyCreationForm", 145, 137), _taget("default"), _sig = false;
 {
 	std::cout << "ShrubberyCreationForm: Default Constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name)
-	: _name(name)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
+	: AForm("ShrubberyCreationForm", SIG, EXE), _target(target), _sig = false;
 {
-	std::cout << "ShrubberyCreationForm " << _name << ": Constructor called" << std::endl;
+	std::cout << "ShrubberyCreationForm with target: " << _target << ": Constructor called" << std::endl;
 }
 
 // Copy constructor
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
+	: AForm(other), _target(other._target)
 {
 	*this = other;
-	std::cout << "ShrubberyCreationForm " << _name << ": copy-constructed." << std::endl;
+	std::cout << "ShrubberyCreationForm with target: " << _target << ": copy-constructed." << std::endl;
 }
 
 // Copy assignment operator
@@ -25,7 +28,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 {
 	if (this != &other)
 	{
-		_name = other._name;
+		_target = other._target;
 	}
 	return (*this);
 }
@@ -33,5 +36,5 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 // Destructor
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout << "ShrubberyCreationForm " << _name << ": Destructor called" << std::endl;
+	std::cout << "ShrubberyCreationForm with target: " << _target << ": Destructor called" << std::endl;
 }

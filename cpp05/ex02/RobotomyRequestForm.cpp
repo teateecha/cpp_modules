@@ -7,17 +7,17 @@ RobotomyRequestForm::RobotomyRequestForm()
 	std::cout << "RobotomyRequestForm: Default Constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string name)
-	: _name(name)
+RobotomyRequestForm::RobotomyRequestForm(std::string target)
+	: _target(target)
 {
-	std::cout << "RobotomyRequestForm " << _name << ": Constructor called" << std::endl;
+	std::cout << "RobotomyRequestForm " << _target << ": Constructor called" << std::endl;
 }
 
 // Copy constructor
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
 {
 	*this = other;
-	std::cout << "RobotomyRequestForm " << _name << ": copy-constructed." << std::endl;
+	std::cout << "RobotomyRequestForm " << _target << ": copy-constructed." << std::endl;
 }
 
 // Copy assignment operator
@@ -25,7 +25,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 {
 	if (this != &other)
 	{
-		_name = other._name;
+		_target = other._target;
 	}
 	return (*this);
 }
@@ -33,5 +33,5 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 // Destructor
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-	std::cout << "RobotomyRequestForm " << _name << ": Destructor called" << std::endl;
+	std::cout << "RobotomyRequestForm " << _target << ": Destructor called" << std::endl;
 }

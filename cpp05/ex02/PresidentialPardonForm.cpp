@@ -7,17 +7,17 @@ PresidentialPardonForm::PresidentialPardonForm()
 	std::cout << "PresidentialPardonForm: Default Constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string name)
-	: _name(name)
+PresidentialPardonForm::PresidentialPardonForm(std::string target)
+	: _target(target)
 {
-	std::cout << "PresidentialPardonForm " << _name << ": Constructor called" << std::endl;
+	std::cout << "PresidentialPardonForm " << _target << ": Constructor called" << std::endl;
 }
 
 // Copy constructor
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other)
 {
 	*this = other;
-	std::cout << "PresidentialPardonForm " << _name << ": copy-constructed." << std::endl;
+	std::cout << "PresidentialPardonForm " << _target << ": copy-constructed." << std::endl;
 }
 
 // Copy assignment operator
@@ -25,7 +25,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 {
 	if (this != &other)
 	{
-		_name = other._name;
+		_target = other._target;
 	}
 	return (*this);
 }
@@ -33,5 +33,5 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 // Destructor
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-	std::cout << "PresidentialPardonForm " << _name << ": Destructor called" << std::endl;
+	std::cout << "PresidentialPardonForm " << _target << ": Destructor called" << std::endl;
 }
