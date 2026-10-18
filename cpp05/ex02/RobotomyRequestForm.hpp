@@ -2,10 +2,11 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 # include <string>
+# include "AForm.hpp"
 # define SIG 72
 # define EXE 45
 
-class RobotomyRequestForm
+class RobotomyRequestForm : public AForm
 {
 	public:
 		RobotomyRequestForm();
@@ -13,8 +14,9 @@ class RobotomyRequestForm
 		RobotomyRequestForm(const RobotomyRequestForm& other);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 		~RobotomyRequestForm();
+		virtual void	action (void) const;
 	private:
-		std::string	_target;
+		std::string		_target;
 };
 
 #endif

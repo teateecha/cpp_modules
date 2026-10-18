@@ -3,21 +3,23 @@
 
 // Constructor
 PresidentialPardonForm::PresidentialPardonForm()
+	: AForm("PresidentialPardonForm", SIG, EXE), _target("default")
 {
 	std::cout << "PresidentialPardonForm: Default Constructor called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target)
-	: _target(target)
+	: AForm("PresidentialPardonForm", SIG, EXE), _target(target)
 {
-	std::cout << "PresidentialPardonForm " << _target << ": Constructor called" << std::endl;
+	std::cout << "PresidentialPardonForm with target " << _target << ": Constructor called" << std::endl;
 }
 
 // Copy constructor
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other)
+	: AForm(other), _target(other._target)
 {
 	*this = other;
-	std::cout << "PresidentialPardonForm " << _target << ": copy-constructed." << std::endl;
+	std::cout << "PresidentialPardonForm with target " << _target << ": copy-constructed." << std::endl;
 }
 
 // Copy assignment operator
@@ -25,6 +27,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 {
 	if (this != &other)
 	{
+		AForm::operator=(other);
 		_target = other._target;
 	}
 	return (*this);
@@ -33,5 +36,10 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 // Destructor
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-	std::cout << "PresidentialPardonForm " << _target << ": Destructor called" << std::endl;
+	std::cout << "PresidentialPardonForm with target " << _target << ": Destructor called" << std::endl;
+}
+
+void	PresidentialPardonForm::action(void) const
+{
+	std::cout << _target << " has been pardoned by Zapod Beeblebrox." << std::endl;
 }

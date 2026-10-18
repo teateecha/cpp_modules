@@ -31,6 +31,7 @@ class Bureaucrat
 		void	increment(void);
 		void	decrement(void);
 		void	signAForm(AForm& form);
+		void	executeForm(AForm const & form) const;
 		
 	private:
 		Bureaucrat& operator=(const Bureaucrat& other);//should not be used with const

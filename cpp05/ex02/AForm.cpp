@@ -1,7 +1,7 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include <iostream>
-
 
 const char*	AForm::GradeTooLowException::what() const throw()
 {
@@ -13,6 +13,10 @@ const char*	AForm::GradeTooHighException::what() const throw()
 	return ("AForm: his grade is too high.");
 }
 
+const char*	AForm::NotSigndException::what() const throw()
+{
+	return ("AForm is not signed");
+}
 
 // Constructor - private to prevent the use
 AForm::AForm()
@@ -84,4 +88,13 @@ void	AForm::beSigned(Bureaucrat& buro)
 	if (buro.getGrade() > _gradeToSign)
 		throw (AForm::GradeTooLowException());
 	_sig = true;
+}
+
+void	AForm::execute(Bureaucrat const & buro) const
+{
+	if (buro.getGrade() > EXE)
+		throw (AForm::GradeTooLowException());
+	else if (_sig == false)
+		throw(AForm::NotSigndException());
+	action();
 }
