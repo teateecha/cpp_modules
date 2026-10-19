@@ -83,7 +83,7 @@ std::ostream&	operator<<(std::ostream& o, AForm const& form)
 	return (o);
 }
 
-void	AForm::beSigned(Bureaucrat& buro)
+void	AForm::beSigned(Bureaucrat const& buro)
 {
 	if (buro.getGrade() > _gradeToSign)
 		throw (AForm::GradeTooLowException());
