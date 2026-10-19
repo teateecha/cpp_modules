@@ -1,8 +1,11 @@
 #include "ShrubberyCreationForm.hpp"
-#include "AForm.hpp"
 #include <iostream>
 #include <fstream>//for ofstream and ifstream
 
+#undef SIG
+#define SIG 145
+#undef EXE
+#define EXE 137
 // Constructor
 ShrubberyCreationForm::ShrubberyCreationForm()
 	: AForm("ShrubberyCreationForm", SIG, EXE), _target("default")

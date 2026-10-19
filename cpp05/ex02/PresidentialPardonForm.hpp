@@ -3,8 +3,6 @@
 
 # include <string>
 # include "AForm.hpp"
-# define SIG 25
-# define EXE 5
 
 class PresidentialPardonForm : public AForm
 {

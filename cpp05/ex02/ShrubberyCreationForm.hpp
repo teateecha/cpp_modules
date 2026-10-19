@@ -3,10 +3,6 @@
 
 # include <string>
 # include "AForm.hpp"
-# define SIG 145
-# define EXE 137
-
-class Bureaucrat;
 
 class ShrubberyCreationForm : public AForm 
 {

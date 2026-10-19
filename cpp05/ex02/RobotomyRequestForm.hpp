@@ -3,8 +3,6 @@
 
 # include <string>
 # include "AForm.hpp"
-# define SIG 72
-# define EXE 45
 
 class RobotomyRequestForm : public AForm
 {

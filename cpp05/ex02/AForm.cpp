@@ -92,7 +92,7 @@ void	AForm::beSigned(Bureaucrat& buro)
 
 void	AForm::execute(Bureaucrat const & buro) const
 {
-	if (buro.getGrade() > EXE)
+	if (buro.getGrade() > _gradeToExec)
 		throw (AForm::GradeTooLowException());
 	else if (_sig == false)
 		throw(AForm::NotSigndException());

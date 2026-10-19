@@ -1,6 +1,10 @@
 #include "RobotomyRequestForm.hpp"
 #include <iostream>
 #include <cstdlib>
+#undef SIG
+#define SIG 72
+#undef EXE
+#define EXE 45
 
 // Constructor
 RobotomyRequestForm::RobotomyRequestForm()

@@ -1,5 +1,7 @@
 #include "PresidentialPardonForm.hpp"
 #include <iostream>
+# define SIG 25
+# define EXE 5
 
 // Constructor
 PresidentialPardonForm::PresidentialPardonForm()
