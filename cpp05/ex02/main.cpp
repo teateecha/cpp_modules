@@ -12,8 +12,7 @@ int main(int argc, char **argv)
 {
     if (argc != 3)
     {
-        std::cerr << "usage: arg1: burocrat name, arg2: burocrat grade, arg3: form name, \
-			arg4 form grade required to sign, arg5 form grade required to execute" << std::endl;
+        std::cerr << "usage: arg1: burocrat name, arg2: burocrat grade" << std::endl;
         return (1);
     }
     std::cout << "\n --- TEST START  ---"  << std::endl;
