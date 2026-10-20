@@ -61,12 +61,10 @@ AForm*	Intern::makeForm(std::string name, std::string target)
 			"RobotomyRequestForm",
 			"PresidentialPardonForm"
 		};
-	AForm*	(Intern::functions[3])(std::string) =
-		{
-			&Intern::_createShrubbery,
-			&Intern::_createRobotomy,
-			&Intern::_createPardon
-		};
+	AForm*	(Intern::*functions[3])(std::string);
+	functions[0] = &Intern::_createShrubbery;
+	functions[1] = &Intern::_createRobotomy;
+	functions[2] = &Intern::_createPardon;
 	int i = 0;
 	while (i < 3 && name != forms[i])
 		i++;
@@ -75,12 +73,13 @@ AForm*	Intern::makeForm(std::string name, std::string target)
 	{
 		if (i == 3)
 			throw(NoSuchFormException());
-		AForm*	form = ((functions[i]))(target);//TODO i dont get how to propperly call the functions from the array.
+		AForm*	form = (this->*functions[i])(target);
 		std::cout << "Intern creates " << name << " with target: " << target << std::endl;
 		return (form);
 	}
 	catch (const std::exception& e)
 	{
-		std::cerr << "Inter couldn't create form " << name << " because " << e.what() << std::endl;
+		std::cerr << "Intern couldn't create form " << name << " because " << e.what() << std::endl;
+		return (NULL);
 	}
 }
