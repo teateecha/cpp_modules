@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 		std::cout << heily << std::endl;
 		// ------------------ shurbbery -----------------
 		std::cout << "\n  ---- SHRUBBERY--" << std::endl;
-		AForm*	sForm = ini.makeForm("ShrubberyCreationForm", "Garden");
+		AForm*	sForm = ini.makeForm("shrubbery creation", "Garden");
 		if (sForm)
 		{
 			std::cout << "-- start sForm -- " << *sForm << " -- end sForm -- " << std::endl;
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 		}
 		// ------------------ RobotomyRequestForm -----------------
 		std::cout << "\n  ---- RobotomyRequestForm--" << std::endl;
-		AForm*	rForm = ini.makeForm("RobotomyRequestForm", "RobertTarget");
+		AForm*	rForm = ini.makeForm("robotomy request", "RobertTarget");
 		if (rForm)
 		{
 			std::cout << "-- start rForm -- " << *rForm << " -- end rForm -- " << std::endl;
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 		}
 		// ------------------ PresidentialPardonForm -----------------
 		std::cout << "\n  ---- PresidentialPardonForm--" << std::endl;
-		AForm*	pForm = ini.makeForm("PresidentialPardonForm", "PaulaTarget");
+		AForm*	pForm = ini.makeForm("presidential pardon", "PaulaTarget");
 		if (pForm)
 		{
 			std::cout << "-- start pForm -- " << *pForm << " -- end pForm -- " << std::endl;
