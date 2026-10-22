@@ -32,6 +32,9 @@ re: fclean all
 		arg4 form grade required to sign, arg5 form grade required to execute" << std::endl;
 test: re
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "Guenter" "22"
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "LowLion" "150"
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "HighHolly" "1"
+
 
 .PHONY: all clean fclean re test
 

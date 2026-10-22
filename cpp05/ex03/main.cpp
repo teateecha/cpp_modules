@@ -16,36 +16,54 @@ int main(int argc, char **argv)
         std::cerr << "usage: arg1: burocrat name, arg2: burocrat grade" << std::endl;
         return (1);
     }
-    std::cout << "\n --- TEST START  ---"  << std::endl;
-    std::string name = std::string(argv[1]);
-    int grade = atoi(argv[2]);
+    std::cout << "\n === TEST START  === " << std::endl;
 	try
 	{
-		Bureaucrat heily = Bureaucrat(name, grade);
-		Intern ini = Intern();
-		std::cout << "\n \t --shrubbery--" << std::endl;
-		AForm*	sForm = ini.makeForm("ShrubberyCreationForm", "TinaTarget");
-		heily.executeForm(*sForm);
-		heily.signAForm(*sForm);
-		heily.executeForm(*sForm);
-		delete sForm;
-		// std::cout << "\n \t --robotomy--" << std::endl;
-		// RobotomyRequestForm	rForm(name);
-		// heily.executeForm(rForm);
-		// heily.signAForm(rForm);
-		// heily.executeForm(rForm);
-		// std::cout << "\n \t --PresidentialPardonForm--" << std::endl;
-		// PresidentialPardonForm pForm(name);
-		// heily.executeForm(pForm);
-		// heily.signAForm(pForm);
-		// heily.executeForm(pForm);
+		Bureaucrat heily = Bureaucrat(argv[1], atoi(argv[2]));
+		Intern ini;
+		// ------------------ shurbbery -----------------
+		std::cout << "\n  ---- SHRUBBERY--" << std::endl;
+		AForm*	sForm = ini.makeForm("ShrubberyCreationForm", "Garden");
+		if (sForm)
+		{
+			heily.executeForm(*sForm);//should fail not signed
+			heily.signAForm(*sForm);
+			heily.executeForm(*sForm);
+			delete sForm;
+		}
+		// ------------------ RobotomyRequestForm -----------------
+		std::cout << "\n  ---- RobotomyRequestForm--" << std::endl;
+		AForm*	rForm = ini.makeForm("RobotomyRequestForm", "RobertTarget");
+		if (rForm)
+		{
+			heily.executeForm(*rForm);//should fail not signed
+			heily.signAForm(*rForm);
+			heily.executeForm(*rForm);
+			delete rForm;
+		}
+		// ------------------ PresidentialPardonForm -----------------
+		std::cout << "\n  ---- PresidentialPardonForm--" << std::endl;
+		AForm*	pForm = ini.makeForm("PresidentialPardonForm", "PaulaTarget");
+		if (pForm)
+		{
+			heily.executeForm(*pForm);//should fail not signed
+			heily.signAForm(*pForm);
+			heily.executeForm(*pForm);
+			delete pForm;
+		}
+		// ------------------ InvalidForm -----------------
+		std::cout << "\n  ---- InvalidForm--" << std::endl;
+		AForm*	iForm = ini.makeForm("InvalidForm", "IlayTarget");
+		if (iForm)
+		{
+			delete iForm;
+		}
 		std::cout << "\n\n Destructors:\n" << std::endl;
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << "--- hello from main catch block" << std::endl;
-		std::cerr << e.what() << std::endl;
+		std::cout << "main caught: " << e.what() << std::endl;
 	}
-	std::cout << " ---- TEST END ---\n\n" <<std::endl;
+	std::cout << " === TEST END ===\n" <<std::endl;
    return (0);
 }
