@@ -1,6 +1,8 @@
 #include "RobotomyRequestForm.hpp"
 #include <iostream>
 #include <cstdlib>
+#include <time.h>//time()
+#include <stdlib.h>//srand
 #undef SIG
 #define SIG 72
 #undef EXE
@@ -47,8 +49,10 @@ RobotomyRequestForm::~RobotomyRequestForm()
 void	RobotomyRequestForm::action(void) const
 {
 	std::cout << "DRILL DRILL .... " << std::endl;
+	srand(time(NULL));//sets the seed nbr for rand()
 	if (rand() % 2 == 0)
 		std::cout << _target << " has been robotomized successfully" << std::endl;
 	else
 		std::cout << "robotomization of " << _target << " failed" << std::endl;
 }
+
