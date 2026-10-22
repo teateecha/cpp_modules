@@ -1,6 +1,7 @@
 #ifndef INTERN_HPP
 #define INTERN_HPP
-#include <string>
+# include <string>
+# include <exception>
 class AForm;
 
 class Intern

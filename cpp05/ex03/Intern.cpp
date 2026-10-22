@@ -19,10 +19,8 @@ Intern::Intern(const Intern& other)
 // Copy assignment operator
 Intern& Intern::operator=(const Intern& other)
 {
-	if (this != &other)
-		return (*this);
-	else
-		return (*this);
+	(void)other;
+	return (*this);
 }
 
 // Destructor
