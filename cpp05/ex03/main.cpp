@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 		AForm*	sForm = ini.makeForm("ShrubberyCreationForm", "Garden");
 		if (sForm)
 		{
+			std::cout << "-- start sForm -- " << *sForm << " -- end sForm -- " << std::endl;
 			heily.executeForm(*sForm);//should fail not signed
 			heily.signAForm(*sForm);
 			heily.executeForm(*sForm);
@@ -36,6 +37,7 @@ int main(int argc, char **argv)
 		AForm*	rForm = ini.makeForm("RobotomyRequestForm", "RobertTarget");
 		if (rForm)
 		{
+			std::cout << "-- start rForm -- " << *rForm << " -- end rForm -- " << std::endl;
 			heily.executeForm(*rForm);//should fail not signed
 			heily.signAForm(*rForm);
 			heily.executeForm(*rForm);
@@ -46,6 +48,7 @@ int main(int argc, char **argv)
 		AForm*	pForm = ini.makeForm("PresidentialPardonForm", "PaulaTarget");
 		if (pForm)
 		{
+			std::cout << "-- start pForm -- " << *pForm << " -- end pForm -- " << std::endl;
 			heily.executeForm(*pForm);//should fail not signed
 			heily.signAForm(*pForm);
 			heily.executeForm(*pForm);
@@ -56,9 +59,9 @@ int main(int argc, char **argv)
 		AForm*	iForm = ini.makeForm("InvalidForm", "IlayTarget");
 		if (iForm)
 		{
+			std::cout << "-- start iForm -- " << *iForm << " -- end iForm -- " << std::endl;
 			delete iForm;
 		}
-		std::cout << "\n\n Destructors:\n" << std::endl;
 	}
 	catch (const std::exception& e)
 	{
