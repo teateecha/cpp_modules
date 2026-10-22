@@ -16,7 +16,7 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
 	: AForm("ShrubberyCreationForm", SIG, EXE), _target(target)
 {
-	std::cout << "ShrubberyCreationForm with target: " << _target << ": Constructor called" << std::endl;
+	std::cout << "ShrubberyCreationForm with target " << _target << ": Constructor called" << std::endl;
 }
 
 // Copy constructor
@@ -24,7 +24,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 	: AForm(other), _target(other._target)
 {
 	*this = other;
-	std::cout << "ShrubberyCreationForm with target: " << _target << ": copy-constructed." << std::endl;
+	std::cout << "ShrubberyCreationForm with target " << _target << ": copy-constructed." << std::endl;
 }
 
 // Copy assignment operator
@@ -41,7 +41,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 // Destructor
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout << "ShrubberyCreationForm with target: " << _target << ": Destructor called" << std::endl;
+	std::cout << "ShrubberyCreationForm with target " << _target << ": Destructor called" << std::endl;
 }
 
 void	ShrubberyCreationForm::action(void) const

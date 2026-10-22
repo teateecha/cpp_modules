@@ -74,7 +74,7 @@ AForm*	Intern::makeForm(std::string name, std::string target)
 		if (i == 3)
 			throw(NoSuchFormException());
 		AForm*	form = (this->*functions[i])(target);
-		std::cout << "Intern creates " << name << " with target: " << target << std::endl;
+		std::cout << "Intern creates " << name << " with target " << target << std::endl;
 		return (form);
 	}
 	catch (const std::exception& e)

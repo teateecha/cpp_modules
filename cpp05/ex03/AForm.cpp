@@ -4,12 +4,12 @@
 
 const char*	AForm::GradeTooLowException::what() const throw()
 {
-	return ("AForm: this grade is too low.");
+	return ("AForm: grade is too low.");
 }
 
 const char*	AForm::GradeTooHighException::what() const throw()
 {
-	return ("AForm: his grade is too high.");
+	return ("AForm: grade is too high.");
 }
 
 const char*	AForm::NotSigndException::what() const throw()
@@ -76,9 +76,9 @@ bool	AForm::getSig(void) const
 std::ostream&	operator<<(std::ostream& o, AForm const& form)
 {
 	o << form.getName()
-		<< ", form grade required to sign: " << form.getGradeToSign()
-		<< "\tform grade required to execute: " << form.getGradeToExec()
-		<< "\t sign status: " << form.getSig();
+		<< ", grade required to sign: " << form.getGradeToSign()
+		<< ", grade required to execute: " << form.getGradeToExec()
+		<< ",  sign status: " << form.getSig();
 	return (o);
 }
 

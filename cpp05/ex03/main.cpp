@@ -21,6 +21,7 @@ int main(int argc, char **argv)
 	{
 		Bureaucrat heily = Bureaucrat(argv[1], atoi(argv[2]));
 		Intern ini;
+		std::cout << heily << std::endl;
 		// ------------------ shurbbery -----------------
 		std::cout << "\n  ---- SHRUBBERY--" << std::endl;
 		AForm*	sForm = ini.makeForm("ShrubberyCreationForm", "Garden");
