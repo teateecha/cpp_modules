@@ -1,26 +1,29 @@
 NAME = converter
-CXX = cc
-FLAGS = -Wall Wextra -Werror -cpp98 #must be different too
+CXX = c++
+CFLAGS = -Wall Wextra -Werror -std=c++98
+
 SRC = main.cpp \
 	  ScalarConverter.cpp \
 
-OBJ = $(SRC.cpp=.o) # i have no clue about this
+OBJ = $(SRC:.cpp=.o)
 
-all : $(NAME)
+all: $(NAME)
 
-NAME : OBJ
-	$(CC) $(FLAGS) OBJ -o $(NAME)
+$(NAME): OBJ
+	$(CXX) $(CFLAGS) $(OBJ) -o $(NAME)
 
-OBJ : SRC
-	$(CC) $(FLAGS) $@ -o $>
+%.o: %.cpp
+	$(CXX) $(CFLAGS) -c $< -o $@
 
-clean :
-	rm -r OBJ
+clean:
+	rm -f $(OBJ)
 
-fclean : clean
-	rm $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
-re : fclean all
+re: fclean all
 
-test : re
+test: re
 	$(NAME)
+
+.PHONY: all clean fclean re test 
