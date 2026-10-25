@@ -13,6 +13,9 @@
     subgraph cpp01
       form("orthodox canonical form")
     end
+	subgraph cpp06
+		casts
+	end
 ```
 
 ## norm
