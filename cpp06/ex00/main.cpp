@@ -1,4 +1,5 @@
 #include <string>
+#include "ScalarConverter.hpp"
 
 int	main(int argc, char** argv)
 {
@@ -6,12 +7,6 @@ int	main(int argc, char** argv)
 	{
 		std::cerr << "usage: ./convert <whatever you want to convert>" << std::endl;
 		return (1);
-		std::string input = std::string(argv[1]);
-		if (input.length())
-		else
-		{
-			
-		}
-
 	}
+	ScalarConverter::convert(argv[1]);
 }
