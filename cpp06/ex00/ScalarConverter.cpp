@@ -31,17 +31,9 @@ static int	isPrintable(char c)
 		return (FALSE);
 }
 
-static int	isDigit(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (TRUE);
-	else
-	 return (FALSE);
-}
-
 static t_type	detectType(std::string input)
 {
-	if (input.length() == 3 &&  input.find_first_not_of("'"))
+	if (input.length() == 3 &&  input[0] == '\'' && isPrintable(input[1]) && input[2] == '\'')
 		return TYPE_CHAR;
 
 	else if (input.find_first_not_of("0123456789-+.f") == std::string::npos)
