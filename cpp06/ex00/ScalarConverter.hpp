@@ -28,7 +28,9 @@ typedef enum e_type
 	TYPE_INT,
 	TYPE_FLOAT,
 	TYPE_DOUBLE,
-	TYPE_INVALID,
+	TYPE_NAN,
+	TYPE_TOO_BIG,
+	TYPE_INVALID
 } t_type;
 
 #endif
