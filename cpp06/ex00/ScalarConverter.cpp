@@ -47,6 +47,8 @@ static t_type	detectType(std::string literal)
 				return (TYPE_FLOAT);
 			if (....)
 				return (TYPE_DOUBLE);
+			if (...)
+				return (TYPE_TOO_BIG);
 	}
 	return (TYPE_INVALID);
 }
