@@ -31,12 +31,12 @@ static int	isPrintable(char c)
 		return (FALSE);
 }
 
-static t_type	detectType(std::string input)
+static t_type	detectType(std::string literal)
 {
-	if (input.length() == 3 &&  input[0] == '\'' && isPrintable(input[1]) && input[2] == '\'')
+	if (literal.length() == 3 &&  literal[0] == '\'' && isPrintable(literal[1]) && literal[2] == '\'')
 		return TYPE_CHAR;
 
-	else if (input.find_first_not_of("0123456789-+.f") == std::string::npos)
+	else if (literal.find_first_not_of("0123456789-+.f") == std::string::npos)
 	{
 			if (has -- or ++ or in wrong place 
 			Or f is not in end or two f or ...)
@@ -51,8 +51,47 @@ static t_type	detectType(std::string input)
 	return (TYPE_INVALID);
 }
 
-void	ScalarConverter::convert(std::string input)
+virtual const char*	ScalarConverter::InvalidTypeException::what(void) const throw()
 {
-	t_type	type = detectType(input);
+	return ("char: impossible\nint: impossible\nfloat: nanf\ndouble: nan");
 }
 
+static void		typePrint(void * inputpointer)
+{
+}
+
+void	ScalarConverter::convert(std::string literal)
+{
+	try
+	{
+		t_type	type = detectType(literal);
+		switch (type)
+		{
+			case TYPE_CHAR:
+				char input = static_cast<char>litearl[1];
+				break;
+			case TYPE_INT:
+				int input = atoi(literal.c_str);
+				break;
+			case TYPE_DOUBLE:
+				double input = std::stod(literal);//TODO checks
+				break;
+			case TYPE_FLOAT:
+			default:
+				throw (InvalidTypeException());
+		}
+		void* inputpointer = static_cast<void*>(input);
+		typePrint(inputpointer);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+}
+
+/*
+ * from subject:
+ * ./convert 0 char: Non displayable int: 0 float: 0.0f double: 0.0
+ * ./convert nan char: impossible int: impossible float: nanf double: nan
+ * ./convert 42.0f char: '*' int: 42 float: 42.0f double: 42.0
+ */
