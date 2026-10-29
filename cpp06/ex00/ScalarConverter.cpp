@@ -53,7 +53,7 @@ static t_type	detectType(std::string literal)
 
 virtual const char*	ScalarConverter::InvalidTypeException::what(void) const throw()
 {
-	return ("char: impossible\nint: impossible\nfloat: nanf\ndouble: nan");
+	return ("char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible");
 }
 
 static void		typePrint(void * inputpointer)
@@ -77,6 +77,9 @@ void	ScalarConverter::convert(std::string literal)
 				double input = std::stod(literal);//TODO checks
 				break;
 			case TYPE_FLOAT:
+				break;
+			case TYPE_NAN:
+				break;
 			default:
 				throw (InvalidTypeException());
 		}
@@ -85,7 +88,7 @@ void	ScalarConverter::convert(std::string literal)
 	}
 	catch (const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }
 
