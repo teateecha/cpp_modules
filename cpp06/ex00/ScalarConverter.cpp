@@ -31,29 +31,40 @@ static int	isPrintable(char c)
 		return (FALSE);
 }
 
+//TODO use strtod
+/*
 static t_type	detectType(std::string literal)
 {
-	if (literal.length() == 3 &&  literal[0] == '\'' && isPrintable(literal[1]) && literal[2] == '\'')
-		return TYPE_CHAR;
-
-	else if (literal.find_first_not_of("0123456789-+.f") == std::string::npos)
-	{
-			if (has -- or ++ or in wrong place 
-			Or f is not in end or two f or ...)
-				return (TYPE_INVALID);
-			if (....)
-				return (TYPE_INT);
-			if (....)
-				return (TYPE_FLOAT);
-			if (....)
-				return (TYPE_DOUBLE);
-			if (...)
-				return (TYPE_TOO_BIG);
-	}
+	if (literal.compare("nan") == 0 
+		|| literal.compare("-inf") == 0 || literal.compare("-inff") == 0
+		|| literal.compare("+inf") == 0 || literal.compare("+inff") == 0)
+		return (TYPE_NAN);
+	if (literal.length() == 1 &&  literal.find_first_not_of("+-f.") == std::string::npos)//prevent them beeing interpreted as numbers
+		return (TYPE_CHAR);
+	if ((literal.find_first_of("+-") != std::string::npos && literal.find_last_of("+-") != 0)
+		|| literal.find_first_of(".") != literal.find_last_of(".")
+		|| literal.find_first_of("f") != literal.find_last_of("f")) //catching -- ++ -+ +- .. ff
+		|| (literal.find_first_of("e") != std::string::npos 
+			&& literal.find_first_of("-") != std::string::npos
+			&& literal[0] != '-'
+			&& literal.find_first_of("-") - literal.find_first_of("e") != 1))
+		return (TYPE_INVALID);
+	if (literal.find_first_not_of("0123456789+-e") == std::string::npos)
+		return(TYPE_INT);
+	if (literal.find_first_not_of("0123456789+-.e") == std::string::npos)
+		return(TYPE_DOUBLE);
+	if (literal.find_first_not_of("0123456789+-.ef") == std::string::npos
+		&& literal.find_first_of("01234567") != std::string::npos
+		&& literal[literal.find_first_of("f") + 1] == '\0'
+		&& literal.find_first_of(".") != std::string::npos
+		&& literal.compare(".f") != 0)
+		return (TYPE_FLOAT);
 	return (TYPE_INVALID);
 }
+*/
 
-virtual const char*	ScalarConverter::InvalidTypeException::what(void) const throw()
+
+const char*	ScalarConverter::InvalidTypeException::what(void) const throw()
 {
 	return ("char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible");
 }
