@@ -1,6 +1,6 @@
 NAME = converte
 CXX = c++
-CFLAGS = -Wall Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = main.cpp \
 	  ScalarConverter.cpp \
@@ -9,7 +9,7 @@ OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): OBJ
+$(NAME): $(OBJ)
 	$(CXX) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp

@@ -10,8 +10,8 @@ class ScalarConverter
 	public:
 		ScalarConverter&	operator=(const ScalarConverter& other);
 		~ScalarConverter();
-		static void	convert(std::string literal);
-		class	InvalidTypeException : public std::exception
+		static int	convert(std::string literal);
+		class	InvalidException : public std::exception
 		{
 			public:
 				virtual const char*	what(void) const throw();

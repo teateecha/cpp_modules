@@ -1,4 +1,10 @@
 #include "ScalarConverter.hpp"
+#include <cctype>//for std::isspace
+#include <iomanip>//for setprecision
+#include <climits>//for INT_MAX
+#include <cstdlib>//for strtod()
+#include <cmath>
+#include <errno.h>//for errno
 #include <iostream>
 
 ScalarConverter::ScalarConverter(void)
@@ -23,15 +29,69 @@ ScalarConverter::~ScalarConverter(void)
 	std::cout << "ScalarConverter: Destructor called" << std::endl;
 }
 
-static int	isPrintable(char c)
+
+const char*	ScalarConverter::InvalidException::what(void) const throw()
 {
-	if (c >= ' ' && c <= '~')
-		return (TRUE);
-	else 
-		return (FALSE);
+	return ("char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible");
 }
 
-//TODO use strtod
+//all ordinary comparisons with nan are false
+static void		numberPrint(double result)
+{
+	if (result >= INT_MIN && result <= static_cast<double>(INT_MAX) + 1.0)
+	{
+		if (result >= ' '  && result < '~' + 1)
+			std::cout << "char: '" <<  static_cast<char>(result) << "'" << std::endl;
+		else if (result > -1 && result < 128)
+			std::cout << "char: Non displayable" << std::endl;
+		else
+			std::cout << "char: imposible" << std::endl;
+		std::cout << "int: " << static_cast<int>(result) << std::endl;
+	}
+	else
+		std::cout << "char: impossible\nint: impossible" <<std::endl;
+	std::cout << std::fixed;
+	std::cout << "float: " << static_cast<float>(result) << "f" << std::endl;
+	std::cout << "double: "  << result << std::endl;
+}
+
+static int	validate(std::string literal)
+{
+	//TODO
+}
+
+int	ScalarConverter::convert(std::string literal)
+{
+	double	result;
+	char*	str_end;
+	errno = 0;
+
+	try
+	{
+		if (std::isspace(literal[0]))
+				throw(InvalidException());
+		result = std::strtod(literal.c_str(), &str_end);
+		if (errno == ERANGE || str_end == literal.c_str()
+				|| (*str_end != '\0' && !(str_end[0] == 'f' && str_end[1] == '\0'))
+				|| literal.compare(0, 2, "0x") == 0)//CHECK for under-or-overflow and if parsable
+			throw (InvalidException());
+		numberPrint(result);
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+		return (1);
+	}
+	return (0);
+}
+	/*
+ * from subject:
+ * ./convert 0 char: Non displayable int: 0 float: 0.0f double: 0.0
+ * ./convert nan char: impossible int: impossible float: nanf double: nan
+ * ./convert 42.0f char: '*' int: 42 float: 42.0f double: 42.0
+ */
+
+
 /*
 static t_type	detectType(std::string literal)
 {
@@ -62,52 +122,3 @@ static t_type	detectType(std::string literal)
 	return (TYPE_INVALID);
 }
 */
-
-
-const char*	ScalarConverter::InvalidTypeException::what(void) const throw()
-{
-	return ("char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible");
-}
-
-static void		typePrint(void * inputpointer)
-{
-}
-
-void	ScalarConverter::convert(std::string literal)
-{
-	try
-	{
-		t_type	type = detectType(literal);
-		switch (type)
-		{
-			case TYPE_CHAR:
-				char input = static_cast<char>litearl[1];
-				break;
-			case TYPE_INT:
-				int input = atoi(literal.c_str);
-				break;
-			case TYPE_DOUBLE:
-				double input = std::stod(literal);//TODO checks
-				break;
-			case TYPE_FLOAT:
-				break;
-			case TYPE_NAN:
-				break;
-			default:
-				throw (InvalidTypeException());
-		}
-		void* inputpointer = static_cast<void*>(input);
-		typePrint(inputpointer);
-	}
-	catch (const std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-}
-
-/*
- * from subject:
- * ./convert 0 char: Non displayable int: 0 float: 0.0f double: 0.0
- * ./convert nan char: impossible int: impossible float: nanf double: nan
- * ./convert 42.0f char: '*' int: 42 float: 42.0f double: 42.0
- */
