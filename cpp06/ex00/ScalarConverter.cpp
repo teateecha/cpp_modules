@@ -55,9 +55,17 @@ static void		numberPrint(double result)
 	std::cout << "double: "  << result << std::endl;
 }
 
-static int	validate(std::string literal)
+static int	checkOnResult(std::string literal, char* str_end)
 {
-	//TODO
+	if (isspace(literal.c_str()[0])// no leading whitespace
+			|| literal.find_first_of("+-") != literal.find_last_of("+-")// no double signes
+			|| errno == ERANGE
+			|| str_end == literal.c_str()//this happens if strtod fails
+			|| (*str_end != '\0' && !(str_end[0] == 'f' && str_end[1] == '\0'))//CHECK for under-or-overflow and if parsable return (FAIL);
+			|| literal.compare(0, 2, "0x") == 0)
+			return(1);
+	else
+		return (0);
 }
 
 int	ScalarConverter::convert(std::string literal)
@@ -68,12 +76,8 @@ int	ScalarConverter::convert(std::string literal)
 
 	try
 	{
-		if (std::isspace(literal[0]))
-				throw(InvalidException());
 		result = std::strtod(literal.c_str(), &str_end);
-		if (errno == ERANGE || str_end == literal.c_str()
-				|| (*str_end != '\0' && !(str_end[0] == 'f' && str_end[1] == '\0'))
-				|| literal.compare(0, 2, "0x") == 0)//CHECK for under-or-overflow and if parsable
+		if (checkOnResult(literal, str_end))
 			throw (InvalidException());
 		numberPrint(result);
 	}
@@ -84,6 +88,9 @@ int	ScalarConverter::convert(std::string literal)
 	}
 	return (0);
 }
+
+
+
 	/*
  * from subject:
  * ./convert 0 char: Non displayable int: 0 float: 0.0f double: 0.0
@@ -98,7 +105,7 @@ static t_type	detectType(std::string literal)
 	if (literal.compare("nan") == 0 
 		|| literal.compare("-inf") == 0 || literal.compare("-inff") == 0
 		|| literal.compare("+inf") == 0 || literal.compare("+inff") == 0)
-		return (TYPE_NAN);
+		return (TYPE_NAN)
 	if (literal.length() == 1 &&  literal.find_first_not_of("+-f.") == std::string::npos)//prevent them beeing interpreted as numbers
 		return (TYPE_CHAR);
 	if ((literal.find_first_of("+-") != std::string::npos && literal.find_last_of("+-") != 0)
