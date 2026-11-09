@@ -32,7 +32,7 @@ ScalarConverter::~ScalarConverter(void)
 
 const char*	ScalarConverter::InvalidException::what(void) const throw()
 {
-	return ("char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible");
+	return ("invalid input");
 }
 
 //all ordinary comparisons with nan are false
@@ -48,8 +48,7 @@ static void		numberPrint(double result)
 			std::cout << "char: imposible" << std::endl;
 		std::cout << "int: " << static_cast<int>(result) << std::endl;
 	}
-	else
-		std::cout << "char: impossible\nint: impossible" <<std::endl;
+	else std::cout << "char: impossible\nint: impossible" <<std::endl;
 	std::cout << std::fixed;
 	std::cout << "float: " << static_cast<float>(result) << "f" << std::endl;
 	std::cout << "double: "  << result << std::endl;
