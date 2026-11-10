@@ -62,12 +62,16 @@ static int	validate(std::string literal)
 
 int	ScalarConverter::convert(std::string literal)
 {
-	double	result;
+	void*	result;
 	char*	str_end;
+	t_type	type;	
 	errno = 0;
 
 	try
 	{
+		type = detectType(literal);
+		result = convertFromString(literal, type);
+	
 		if (std::isspace(literal[0]))
 				throw(InvalidException());
 		result = std::strtod(literal.c_str(), &str_end);
@@ -92,7 +96,6 @@ int	ScalarConverter::convert(std::string literal)
  */
 
 
-/*
 static t_type	detectType(std::string literal)
 {
 	if (literal.compare("nan") == 0 
@@ -121,4 +124,3 @@ static t_type	detectType(std::string literal)
 		return (TYPE_FLOAT);
 	return (TYPE_INVALID);
 }
-*/
