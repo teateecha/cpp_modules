@@ -32,13 +32,13 @@ ScalarConverter::~ScalarConverter(void)
 
 const char*	ScalarConverter::InvalidException::what(void) const throw()
 {
-	return ("char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible");
+	return ("invalid input");
 }
 
 //all ordinary comparisons with nan are false
 static void		numberPrint(double result)
 {
-	if (result >= INT_MIN && result <= static_cast<double>(INT_MAX) + 1.0)
+	if (result >= INT_MIN && result < static_cast<double>(INT_MAX) + 1.0)
 	{
 		if (result >= ' '  && result < '~' + 1)
 			std::cout << "char: '" <<  static_cast<char>(result) << "'" << std::endl;
