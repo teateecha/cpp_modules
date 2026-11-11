@@ -70,29 +70,32 @@ static int	checkOnResult(std::string literal, char* str_end)
 static t_type	detectType(std::string literal)
 {
 	if ((literal.length() == 1 && !std::isdigit(static_cast<unsigned char>(literal[0])))
-			|| (literal.length() == 3 && literal[0] == 39 && literal[2] == 39))
+			|| (literal.length() == 3 && literal[0] == 39 && literal[2] == 39))//accepts "'1'"
 		return (TYPE_CHAR);
-	if (literal.compare("nan") == 0 
+	if (literal.compare("nan") == 0
 		|| literal.compare("-inf") == 0 || literal.compare("-inff") == 0
 		|| literal.compare("+inf") == 0 || literal.compare("+inff") == 0)
 		return (TYPE_NAN);
-	if (literal.length() == 1 &&  literal.find_first_not_of("+-f.") == std::string::npos)//prevent them beeing interpreted as numbers
-		return (TYPE_CHAR);
-	if ((literal.find_first_of("+-") != std::string::npos && literal.find_last_of("+-") != 0)
-		|| literal.find_first_of(".") != literal.find_last_of(".")
-		|| literal.find_first_of("f") != literal.find_last_of("f") //catching -- ++ -+ +- .. ff
-		|| (literal.find_first_of("e") != std::string::npos 
-			&& literal.find_first_of("-") != std::string::npos
-			&& literal[0] != '-'
-			&& literal.find_first_of("-") - literal.find_first_of("e") != 1))
+	if (literal.find_first_of("+-") != std::string::npos)//there is at least one + or -
+	{
+		if (literal.find_first_of("+-") == 0)
+			literal.erase(0,1);//is this removing it from the original or just inside this function?
+		if (literal.find_first_of("+-") != std::string::npos
+			&& (literal.find_first_of("e") == std::string::npos
+			|| literal.find_first_of("e") != literal.find_last_of("e")
+			|| literal.find_first_of("e") - literal.find_first_of("-") != 1))
+				return (TYPE_INVALID);
+	}
+	if (literal.find_first_of(".") != literal.find_last_of(".")
+		|| literal.find_first_of("f") != literal.find_last_of("f"))//catching .. ff
 		return (TYPE_INVALID);
-	if (literal.find_first_not_of("0123456789+-e") == std::string::npos)
+	if (literal.find_first_not_of("0123456789-e") == std::string::npos)
 		return(TYPE_INT);
-	if (literal.find_first_not_of("0123456789+-.e") == std::string::npos)
+	if (literal.find_first_not_of("0123456789-.e") == std::string::npos)
 		return(TYPE_DOUBLE);
-	if (literal.find_first_not_of("0123456789+-.ef") == std::string::npos
+	if (literal.find_first_not_of("0123456789-.ef") == std::string::npos
 		&& literal.find_first_of("01234567") != std::string::npos
-		&& literal[literal.find_first_of("f") + 1] == '\0'
+		&& literal[literal.find_first_of("f")  1] == '\0'
 		&& literal.find_first_of(".") != std::string::npos
 		&& literal.compare(".f") != 0)
 		return (TYPE_FLOAT);
