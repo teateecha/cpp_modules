@@ -69,6 +69,9 @@ static int	checkOnResult(std::string literal, char* str_end)
 
 static t_type	detectType(std::string literal)
 {
+	if ((literal.length() == 1 && !std::isdigit(static_cast<unsigned char>(literal[0])))
+			|| (literal.length() == 3 && literal[0] == 39 && literal[2] == 39))
+		return (TYPE_CHAR);
 	if (literal.compare("nan") == 0 
 		|| literal.compare("-inf") == 0 || literal.compare("-inff") == 0
 		|| literal.compare("+inf") == 0 || literal.compare("+inff") == 0)
@@ -107,6 +110,7 @@ int	ScalarConverter::convert(std::string literal)
 	{
 		type = detectType(literal);
 		result = std::strtod(literal.c_str(), &str_end);
+		std::cout << "result is: " << type <<std::endl;
 		if (checkOnResult(literal, str_end))
 			throw (InvalidException());
 		numberPrint(result);
