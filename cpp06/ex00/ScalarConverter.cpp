@@ -67,14 +67,45 @@ static int	checkOnResult(std::string literal, char* str_end)
 		return (0);
 }
 
+static t_type	detectType(std::string literal)
+{
+	if (literal.compare("nan") == 0 
+		|| literal.compare("-inf") == 0 || literal.compare("-inff") == 0
+		|| literal.compare("+inf") == 0 || literal.compare("+inff") == 0)
+		return (TYPE_NAN);
+	if (literal.length() == 1 &&  literal.find_first_not_of("+-f.") == std::string::npos)//prevent them beeing interpreted as numbers
+		return (TYPE_CHAR);
+	if ((literal.find_first_of("+-") != std::string::npos && literal.find_last_of("+-") != 0)
+		|| literal.find_first_of(".") != literal.find_last_of(".")
+		|| literal.find_first_of("f") != literal.find_last_of("f") //catching -- ++ -+ +- .. ff
+		|| (literal.find_first_of("e") != std::string::npos 
+			&& literal.find_first_of("-") != std::string::npos
+			&& literal[0] != '-'
+			&& literal.find_first_of("-") - literal.find_first_of("e") != 1))
+		return (TYPE_INVALID);
+	if (literal.find_first_not_of("0123456789+-e") == std::string::npos)
+		return(TYPE_INT);
+	if (literal.find_first_not_of("0123456789+-.e") == std::string::npos)
+		return(TYPE_DOUBLE);
+	if (literal.find_first_not_of("0123456789+-.ef") == std::string::npos
+		&& literal.find_first_of("01234567") != std::string::npos
+		&& literal[literal.find_first_of("f") + 1] == '\0'
+		&& literal.find_first_of(".") != std::string::npos
+		&& literal.compare(".f") != 0)
+		return (TYPE_FLOAT);
+	return (TYPE_INVALID);
+}
+
 int	ScalarConverter::convert(std::string literal)
 {
 	double	result;
 	char*	str_end;
+	t_type	type;
 	errno = 0;
 
 	try
 	{
+		type = detectType(literal);
 		result = std::strtod(literal.c_str(), &str_end);
 		if (checkOnResult(literal, str_end))
 			throw (InvalidException());
@@ -98,33 +129,4 @@ int	ScalarConverter::convert(std::string literal)
  */
 
 
-/*
-static t_type	detectType(std::string literal)
-{
-	if (literal.compare("nan") == 0 
-		|| literal.compare("-inf") == 0 || literal.compare("-inff") == 0
-		|| literal.compare("+inf") == 0 || literal.compare("+inff") == 0)
-		return (TYPE_NAN)
-	if (literal.length() == 1 &&  literal.find_first_not_of("+-f.") == std::string::npos)//prevent them beeing interpreted as numbers
-		return (TYPE_CHAR);
-	if ((literal.find_first_of("+-") != std::string::npos && literal.find_last_of("+-") != 0)
-		|| literal.find_first_of(".") != literal.find_last_of(".")
-		|| literal.find_first_of("f") != literal.find_last_of("f")) //catching -- ++ -+ +- .. ff
-		|| (literal.find_first_of("e") != std::string::npos 
-			&& literal.find_first_of("-") != std::string::npos
-			&& literal[0] != '-'
-			&& literal.find_first_of("-") - literal.find_first_of("e") != 1))
-		return (TYPE_INVALID);
-	if (literal.find_first_not_of("0123456789+-e") == std::string::npos)
-		return(TYPE_INT);
-	if (literal.find_first_not_of("0123456789+-.e") == std::string::npos)
-		return(TYPE_DOUBLE);
-	if (literal.find_first_not_of("0123456789+-.ef") == std::string::npos
-		&& literal.find_first_of("01234567") != std::string::npos
-		&& literal[literal.find_first_of("f") + 1] == '\0'
-		&& literal.find_first_of(".") != std::string::npos
-		&& literal.compare(".f") != 0)
-		return (TYPE_FLOAT);
-	return (TYPE_INVALID);
-}
-*/
+
