@@ -40,33 +40,25 @@ static void		numberPrint(void* result, t_type type)
 {
 	switch (type)
 	{
-		case TYPE_CHAR:
-			char *value = static_cast<char *>(result);
-		case TYPE_INT:
-			int *value = static_cast<int *>(result);
-		case TYPE_DOUBLE:
-			double *value = static_cast<double *>(result);
-		case TYPE_FLOAT:
-			float *value = static_cast<float *>(result);
-		default:
-			throw (InvalidException());
+		case TYPE_CHAR;
+			char* value = static_cast<char *>(result);
+			break;
 	}
-
-	double test = static_cast<double>(*result);
+	double test = *(static_cast<double *>(result));
 	if (type <= TYPE_INT || (test >= INT_MIN && test < static_cast<double>(INT_MAX) + 1.0))
 	{
-		if (*value >= ' '  && *value < '~' + 1)
-			std::cout << "char: '" <<  static_cast<char>(*value) << "'" << std::endl;
-		else if (*value > -1 && *value < 128)
+		if (*result >= ' '  && *result < '~' + 1)
+			std::cout << "char: '" <<  static_cast<char>(*result) << "'" << std::endl;
+		else if (*result > -1 && *result < 128)
 			std::cout << "char: Non displayable" << std::endl;
 		else
 			std::cout << "char: imposible" << std::endl;
-		std::cout << "int: " << static_cast<int>(*value) << std::endl;
+		std::cout << "int: " << static_cast<int>(*result) << std::endl;
 	}
 	else std::cout << "char: impossible\nint: impossible" <<std::endl;
 	std::cout << std::fixed;
-	std::cout << "float: " << static_cast<float>(*value) << "f" << std::endl;
-	std::cout << "double: "  << static_cast<double>(*value) << std::endl;
+	std::cout << "float: " << static_cast<float>(*result) << "f" << std::endl;
+	std::cout << "double: "  << static_cast<double>(*result) << std::endl;
 }
 
 static t_type	detectType(std::string literal)
